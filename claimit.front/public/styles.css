@@ -1,0 +1,182 @@
+html {
+    width: 385px;
+    height: 600px;
+    overflow: hidden !important;
+
+}
+
+body {
+    background-color: #1c1c1c;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    overflow: hidden !important;
+}
+
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 15px 20px;
+}
+
+h1 {
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    margin: 0;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.money-gif {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.earnBox {
+    margin-top: 70px;
+}
+
+.title {
+    color: #57b3fe;
+    font-size: 56px;
+}
+
+.subTitle {
+    color: #B0B0B0;
+    font-size: 18px;
+}
+
+.ctn {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+svg {
+    margin: 7px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color .8s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 'My Farms' Button */
+button.my-farms {
+    background-color: #57b3fe;
+    color: #1B1B1B;
+}
+
+button.my-farms:hover {
+    background-color: #8fcdff;
+    transform: scale(1.05);
+}
+
+/* 'Earnings' Button */
+button.earnings {
+    background-color: #57b3fe;
+    color: #1B1B1B;
+}
+
+button.earnings:hover {
+    background-color: #8fcdff;
+    transform: scale(1.05);
+}
+
+.projectBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.projectRow {
+    background-color: #222222;
+    width: 85%;
+    padding: 15px 20px;
+    margin: 4px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.projectRow:hover {
+    background-color: #414141;
+}
+
+.coinInfos {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    color: #fff;
+    margin: 10px;
+}
+
+.coinIco {
+    margin-right: 10px;
+}
+
+.coinLabel {
+    margin-right: auto;
+}
+
+.coinAmount {
+    margin-left: auto;
+}
+
+.addProjectLabel {
+    color: #5d5d5d;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .6s ease-in-out;
+}
+.addProjectLabel:hover {
+    color:#57b3fe;
+}
