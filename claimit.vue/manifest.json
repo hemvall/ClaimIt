@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "ClaimIt",
+    "version": "1.0",
+    "description": "ClaimIt Chrome Extension",
+    "icons": {
+      "16": "./assets/logo.png",
+      "48": "./assets/logo.png",
+      "128": "./assets/logo.png"
+    },
+    "action": {
+      "default_popup": "index.html"
+    },
+    "permissions": ["storage", "activeTab"],
+    "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["styles.css"]
+    }
+    ]
+  }
+  
