@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airdrop Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="pageContainer">
+        <h1 id="airdropName"></h1>
+        <img id="airdropImage" src="" alt="Airdrop Image" height="100">
+        <p id="airdropAmount"></p>
+        <button onclick="window.close()">Close</button>
+    </div>
+
+    <script>
+        // Option 1: Get data from query params
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("airdropName").textContent = params.get("name");
+        document.getElementById("airdropAmount").textContent = "$" + params.get("amount");
+        document.getElementById("airdropImage").src = params.get("image");
+
+        // Option 2: Use localStorage
+        // const airdrop = JSON.parse(localStorage.getItem("selectedAirdrop"));
+        // if (airdrop) {
+        //     document.getElementById("airdropName").textContent = airdrop.name;
+        //     document.getElementById("airdropAmount").textContent = "$" + airdrop.amount;
+        //     document.getElementById("airdropImage").src = airdrop.image;
+        // }
+    </script>
+</body>
+</html>

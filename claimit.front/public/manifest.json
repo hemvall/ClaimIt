@@ -4,9 +4,9 @@
     "version": "1.0",
     "description": "ClaimIt Chrome Extension",
     "icons": {
-      "16": "./assets/logo.png",
-      "48": "./assets/logo.png",
-      "128": "./assets/logo.png"
+      "16": "./assets/airdrop.png",
+      "48": "./assets/airdrop.png",
+      "128": "./assets/airdrop.png"
     },
     "action": {
       "default_popup": "index.html"

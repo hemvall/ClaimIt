@@ -15,8 +15,14 @@ async function loadAirdrops() {
 
         const button = document.createElement("button");
         button.className = "projectRow";
-        // button.onclick = () => markAsClaimed(airdrop.id);
-
+        button.onclick = () => {
+            chrome.windows.create({
+                url: `airdrop.html?name=${encodeURIComponent(airdrop.name)}&amount=${airdrop.amount}&image=${encodeURIComponent(airdrop.image)}`,
+                type: "popup",
+                width: 400,
+                height: 600
+            });
+        };
         const img = document.createElement("img");
         img.className = "coinIcon";
         img.alt = airdrop.name;
@@ -53,9 +59,9 @@ async function fetchCoinPrice(coinName) {
         const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinName}&vs_currencies=usd`);
         const data = await response.json();
         
-        const price = data[coinName]?.usd; // Vérifie si `coinName` existe dans l'objet retourné
+        const price = data[coinName]?.usd;
         console.log(`${coinName} price: $${price}`);
-        return price || 0; // Retourne 0 si le prix n'est pas trouvé
+        return price || 0;
     } catch (error) {
         console.error(`Error fetching ${coinName} price:`, error);
         return 0;
@@ -64,7 +70,7 @@ async function fetchCoinPrice(coinName) {
 
 async function removeAirdrop(id) {
     await deleteAirdrop(id);
-    loadAirdrops(); // Recharger la liste après suppression
+    loadAirdrops();
 }
 
 document.getElementById('addAirdropBtn').addEventListener('click', async function() {
@@ -88,10 +94,9 @@ document.getElementById('addAirdropBtn').addEventListener('click', async functio
     loadAirdrops();
 });
 
-// Marquer un airdrop comme réclamé
 async function markAsClaimed(id) {
     await updateAirdrop(id, true);
-    loadAirdrops(); // Recharger la liste après mise à jour
+    loadAirdrops();
 }
 
 // Charger les airdrops au démarrage
