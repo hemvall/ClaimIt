@@ -1,58 +1,65 @@
 import { getAirdrops, addAirdrop, updateAirdrop, deleteAirdrop } from "./db.js";
 
-// Charger les airdrops dynamiquement dans le bouton
 async function loadAirdrops() {
     const airdrops = await getAirdrops();
     const container = document.getElementById("airdropList");
-    container.innerHTML = ""; // Nettoyer la liste avant d'ajouter les nouveaux éléments
+    container.innerHTML = "";
 
-    airdrops.forEach(airdrop => {
-        // Création du bouton
+    let totalAmount = 0;
+
+    for (const airdrop of airdrops) {
+        const coinPrice = await fetchCoinPrice(airdrop.name) || 0;
+        const amountValue = airdrop.amount * coinPrice;
+
+        totalAmount += parseFloat(amountValue) || 0;
+
         const button = document.createElement("button");
         button.className = "projectRow";
-        button.onclick = () => markAsClaimed(airdrop.id);
+        // button.onclick = () => markAsClaimed(airdrop.id);
 
-        // Ajout de l'icône
         const img = document.createElement("img");
         img.className = "coinIcon";
         img.alt = airdrop.name;
         img.height = 35;
         img.width = 35;
         img.style.borderRadius = "50%";
-        img.src = airdrop.image || "https://png.pngtree.com/png-clipart/20221014/original/pngtree-colorful-circle-logo-design-frame-png-image_8688484.png"; // Image par défaut si pas d'image
+        img.src = airdrop.image || "https://png.pngtree.com/png-clipart/20221014/original/pngtree-colorful-circle-logo-design-frame-png-image_8688484.png";
 
-        // Création du conteneur des infos
         const infoDiv = document.createElement("div");
         infoDiv.className = "coinInfos";
 
-        // Nom de l'airdrop
         const label = document.createElement("a");
         label.className = "coinLabel";
         label.textContent = airdrop.name;
 
-        // Montant de l'airdrop
         const amount = document.createElement("a");
         amount.className = "coinAmount";
-        amount.textContent = "$" + (airdrop.amount || "0.00");
+        amount.textContent = "$" + amountValue.toFixed(2);
 
-        // Delete project
-        const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "🗑";
-        deleteBtn.onclick = (event) => {
-            event.stopPropagation();
-            removeAirdrop(airdrop.id);
-        };
-
-        // Construction de la structure HTML
         infoDiv.appendChild(label);
         infoDiv.appendChild(amount);
         button.appendChild(img);
         button.appendChild(infoDiv);
-        // button.appendChild(deleteBtn);
-
-        // Ajout du bouton dans le conteneur
         container.appendChild(button);
-    });
+    }
+
+    const totalAmountElement = document.querySelector(".title");
+    totalAmountElement.textContent = `$${totalAmount.toFixed(2)}`;
+}
+
+
+async function fetchCoinPrice(coinName) {
+    try {
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinName}&vs_currencies=usd`);
+        const data = await response.json();
+        
+        const price = data[coinName]?.usd; // Vérifie si `coinName` existe dans l'objet retourné
+        console.log(`${coinName} price: $${price}`);
+        return price || 0; // Retourne 0 si le prix n'est pas trouvé
+    } catch (error) {
+        console.error(`Error fetching ${coinName} price:`, error);
+        return 0;
+    }
 }
 
 async function removeAirdrop(id) {
