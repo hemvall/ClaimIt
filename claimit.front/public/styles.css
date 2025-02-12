@@ -26,6 +26,8 @@ body {
 }
 
 .header {
+    background-color: #1c1c1c;
+    z-index: 99;
     position: fixed;
     top: 0;
     left: 0;
@@ -150,6 +152,13 @@ button.earnings:hover {
     background-color: #414141;
 }
 
+#airdropList {
+    width: 100%;  /* Ensure the container stretches to the available width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Center the items if needed */
+}
+
 .coinInfos {
     display: flex;
     justify-content: space-between;
@@ -179,4 +188,27 @@ button.earnings:hover {
 }
 .addProjectLabel:hover {
     color:#57b3fe;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    border: none;
+    width: 80%;
+    font-size: 16px;
+}
+
+#addAirdropBtn {
+    background-color: #57b3fe;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#addAirdropBtn:hover {
+    background-color: #8fcdff;
+    transform: scale(1.05);
 }

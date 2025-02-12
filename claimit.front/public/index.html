@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <script type="module" src="./assets/scripts/popup.js"></script>
+
 </head>
 
 <body>
@@ -42,40 +44,15 @@
             </button>
         </div>
         <div class="projectBox">
-            <button class="projectRow">
-                <img class="coinIcon" alt="nodepay" height="35px" width="35px"
-                    src="https://img.cryptorank.io/coins/nodepay1717086233704.png" />
-                <div class="coinInfos">
-                    <a class="coinLabel">NodePay</a>
-                    <a class="coinAmount">$26.29</a>
-                </div>
-            </button>
-            <button class="projectRow">
-                <img class="coinIcon" alt="nodepay" height="35px" width="35px"
-                    src="https://img.cryptorank.io/coins/bless1731590416738.png" />
-                <div class="coinInfos">
-                    <a class="coinLabel">Bless</a>
-                    <a class="coinAmount">$140.02</a>
-                </div>
-            </button>
-            <button class="projectRow">
-                <img class="coinIcon" alt="nodepay" height="35px" width="35px"
-                    src="https://img.cryptorank.io/coins/nodepay1717086233704.png" />
-                <div class="coinInfos">
-                    <a class="coinLabel">AiGaea</a>
-                    <a class="coinAmount">98,63</a>
-                </div>
-            </button>
-            <button class="projectRow">
-                <img class="coinIcon" alt="nodepay" height="35px" width="35px"
-                    src="https://img.cryptorank.io/coins/bless1731590416738.png" />
-                <div class="coinInfos">
-                    <a class="coinLabel">Kaisar</a>
-                    <a class="coinAmount">TBD</a>
-                </div>
-            </button>
+            <div id="airdropList"></div>
         </div>
-        <a class="addProjectLabel">+ Add a project</a>
+
+        <!--Add new airdrop-->
+        <input type="text" id="airdropName" placeholder="Enter Airdrop Name" />
+        <input type="number" id="airdropAmount" placeholder="Amount" />
+        <input type="text" id="airdropImage" placeholder="Image URL" />
+        <button id="addAirdropBtn">Add Airdrop</button>
+
     </div>
 
 
