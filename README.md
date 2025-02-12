@@ -10,5 +10,10 @@
 - 💰 **One-click Claim** – Easily claim your eligible tokens
 - 🌎 **Multi-Chain Support** – Works with Ethereum, Polygon, Binance Smart Chain, and more
 
+## Technologies Used
+- **Backend:** TBD
+- **Frontend:** Native js
+- **Database:** IndexedDb
+- 
 ## 📦 Installation
 TODO
