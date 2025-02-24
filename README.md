@@ -9,6 +9,8 @@
 - 🔔 **Real-time Alerts** – Get notified when you qualify for an airdrop
 - 💰 **One-click Claim** – Easily claim your eligible tokens
 - 🌎 **Multi-Chain Support** – Works with Ethereum, Polygon, Binance Smart Chain, and more
+- 🔹 **Airdrop Finder Bot** → Scrapes new airdrop opportunities and notifies users.
+
 
 ## Technologies Used
 - **Backend:** TBD
