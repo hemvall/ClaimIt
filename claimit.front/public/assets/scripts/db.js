@@ -14,6 +14,7 @@ function openDB() {
                 store.createIndex("name", "name", { unique: false });
                 store.createIndex("amount", "amount", { unique: false });
                 store.createIndex("image", "image", { unique: false }); 
+                store.createIndex("claimed", "claimed", { unique: false }); 
             }
         };
 
@@ -21,6 +22,13 @@ function openDB() {
         request.onerror = (event) => reject(event.target.error);
     });
 }
+
+async function viewAirdrops() {
+    const airdrops = await getAirdrops();
+    console.log(airdrops);  // You can display them in the dashboard instead of just logging them.
+}
+viewAirdrops();
+
 
 // Ajoute un airdrop
 async function addAirdrop(name, amount = 0, image = "", claimed = false) {
@@ -84,6 +92,5 @@ async function deleteAirdrop(id) {
         request.onerror = (event) => reject(event.target.error);
     });
 }
-
 // Export des fonctions
 export { addAirdrop, getAirdrops, updateAirdrop, deleteAirdrop };

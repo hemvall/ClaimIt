@@ -14,6 +14,7 @@ body {
     text-align: center;
     margin: 0;
     overflow: hidden !important;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 
@@ -26,24 +27,13 @@ body {
 }
 
 .header {
-    background-color: #1c1c1c;
     z-index: 99;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
     padding: 15px 20px;
-}
-
-h1 {
-    color: white;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 32px;
-    margin: 0;
 }
 
 .header a {
@@ -54,8 +44,8 @@ h1 {
 }
 
 .money-gif {
-    display: none;
     position: fixed;
+    opacity: .33;
     bottom: 0;
     left: 0;
     top: 0;
@@ -66,17 +56,31 @@ h1 {
 }
 
 .earnBox {
-    margin-top: 70px;
+    margin-top: 30px;
+}
+
+h1 {
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    margin: 0;
 }
 
 .title {
-    color: #57b3fe;
-    font-size: 56px;
+    color: #fff;
+    font-size: 72px;
+    font-family: 'Space Grotesk', sans-serif;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7),
+        0 0 8px rgba(255, 255, 255, 0.5);
+    font-weight: 700;
 }
 
 .subTitle {
-    color: #B0B0B0;
-    font-size: 18px;
+    color: #d1d1d1;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.5px;
 }
 
 .ctn {
@@ -87,7 +91,8 @@ h1 {
 .container {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 svg {
@@ -95,8 +100,49 @@ svg {
 }
 
 button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#actionButton:focus {
+    outline: 3px solid #57b3fe;
+}
+
+#actionButton {
+    background-color: #57b3fe;
+    border: 1px solid #57b3fe;
+    color: #1c1c1c;
     padding: 10px 20px;
-    margin: 10px;
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 8px #57b3fe;
+    /* Subtle shadow for a more balanced look */
+    border-radius: 5px;
+    text-decoration: none;
+    /* animation: pulse 1.5s infinite alternate; */
+}
+
+#actionButton:hover {
+    background-color: transparent;
+    color: #57b3fe;
+    border: 1px solid #57b3fe;
+    /* Slight scale effect for a subtle hover */
+    box-shadow: 0 0 15px #57b3fe;
+}
+
+.projectBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+button.projectRow {
+    padding: 10px;
     border-radius: 15px;
     border: none;
     cursor: pointer;
@@ -106,35 +152,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-/* 'My Farms' Button */
-button.my-farms {
-    background-color: #57b3fe;
-    color: #1B1B1B;
-}
-
-button.my-farms:hover {
-    background-color: #8fcdff;
-    transform: scale(1.05);
-}
-
-/* 'Earnings' Button */
-button.earnings {
-    background-color: #57b3fe;
-    color: #1B1B1B;
-}
-
-button.earnings:hover {
-    background-color: #8fcdff;
-    transform: scale(1.05);
-}
-
-.projectBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
 }
 
 .projectRow {
@@ -153,10 +171,11 @@ button.earnings:hover {
 }
 
 #airdropList {
-    width: 100%;  /* Ensure the container stretches to the available width */
+    width: 110%;
+    /* Ensure the container stretches to the available width */
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Center the items if needed */
+    align-items: center;
 }
 
 .coinInfos {
@@ -186,8 +205,9 @@ button.earnings:hover {
     cursor: pointer;
     transition: .6s ease-in-out;
 }
+
 .addProjectLabel:hover {
-    color:#57b3fe;
+    color: #57b3fe;
 }
 
 input {
@@ -211,4 +231,148 @@ input {
 #addAirdropBtn:hover {
     background-color: #8fcdff;
     transform: scale(1.05);
+}
+
+h3 {
+    color: white;
+    font-size: 22px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+.tab-nav {
+    width: 100%;
+    background: linear-gradient(to bottom, #0d0d0d 60%, #232323 100%);
+    padding: 10px 0;
+    margin: 20px 0;
+    font-weight: 600;
+}
+
+.navigator {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab-nav input {
+    display: none;
+}
+
+.projectBox input {
+    display: block;
+}
+
+/* Style des labels des onglets */
+.tab-nav label {
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.tab-nav label:hover {
+    color: #57b3fe;
+}
+
+/* Contenu des onglets */
+.tab-content {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+/* Masquer tout le contenu par défaut */
+.tab-pane {
+    display: none;
+}
+
+.tab-pane h3 {
+    display: flex;
+}
+
+#tab1,
+#tab2,
+#tab3 {
+    font-weight: 600;
+}
+
+/* Afficher uniquement l'onglet actif */
+#tab1:checked~.tab-content #content1,
+#tab2:checked~.tab-content #content2,
+#tab3:checked~.tab-content #content3 {
+    display: block;
+}
+
+/* Effet de surbrillance sur l'onglet actif */
+#tab1:checked+label,
+#tab2:checked+label,
+#tab3:checked+label {
+    color: #57b3fe;
+    border-bottom: 2px solid #57b3fe;
+    padding-bottom: 5px;
+}
+
+
+.progress-container {
+    width: 75%;
+    background-color: #333;
+    color: white;
+    border-radius: 25px;
+    overflow: hidden;
+    height: 25px;
+    margin: 0 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    text-align: center;
+    line-height: 25px;
+    color: white;
+    background: linear-gradient(90deg, #2e9efa, #a7d7ff);
+    border-radius: 8px;
+    transition: width 0.5s ease-in-out;
+}
+
+#level-text {
+    color: white;
+    font-size: 18px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: .4;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn .5s ease-out forwards;
+}
+
+.claimedStatus {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px 10px;
+    margin: 0;
+    border-radius: 12px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.claimedStatus.claimed {
+    background-color: #30fd36;
+    color: white;
+}
+
+.claimedStatus.notClaimed {
+    background-color: #fb3ee1;
+    color: white;
 }

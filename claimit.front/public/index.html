@@ -25,38 +25,63 @@
         </div>
         <div class="earnBox">
             <h1 class="title">$0</h1>
-            <a class="subTitle">Earned w/AirDrops</a>
+            <a class="subTitle">Total Airdrop Earnings</a>
         </div>
+        <br><br>
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <p id="level-text">Level: 1</p>
+        
         <div class="container">
-            <button class="my-farms">
-                <svg xmlns="http://www.w3.org/2000/svg" height="25px" width="25px" viewbox="0 0 640 512">
-                    <path fill="#1c1c1c"
-                        d="M96 64c0-35.3 28.7-64 64-64L266.3 0c26.2 0 49.7 15.9 59.4 40.2L373.7 160 480 160l0-33.8c0-24.8 5.8-49.3 16.9-71.6l2.5-5c7.9-15.8 27.1-22.2 42.9-14.3s22.2 27.1 14.3 42.9l-2.5 5c-6.7 13.3-10.1 28-10.1 42.9l0 33.8 56 0c22.1 0 40 17.9 40 40l0 45.4c0 16.5-8.5 31.9-22.6 40.7l-43.3 27.1c-14.2-5.9-29.8-9.2-46.1-9.2c-39.3 0-74.1 18.9-96 48l-80 0c0 17.7-14.3 32-32 32l-8.2 0c-1.7 4.8-3.7 9.5-5.8 14.1l5.8 5.8c12.5 12.5 12.5 32.8 0 45.3l-22.6 22.6c-12.5 12.5-32.8 12.5-45.3 0l-5.8-5.8c-4.6 2.2-9.3 4.1-14.1 5.8l0 8.2c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-8.2c-4.8-1.7-9.5-3.7-14.1-5.8l-5.8 5.8c-12.5 12.5-32.8 12.5-45.3 0L40.2 449.1c-12.5-12.5-12.5-32.8 0-45.3l5.8-5.8c-2.2-4.6-4.1-9.3-5.8-14.1L32 384c-17.7 0-32-14.3-32-32l0-32c0-17.7 14.3-32 32-32l8.2 0c1.7-4.8 3.7-9.5 5.8-14.1l-5.8-5.8c-12.5-12.5-12.5-32.8 0-45.3l22.6-22.6c9-9 21.9-11.5 33.1-7.6l0-.6 0-32 0-96zm170.3 0L160 64l0 96 32 0 112.7 0L266.3 64zM176 256a80 80 0 1 0 0 160 80 80 0 1 0 0-160zM528 448a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm0 64c-48.6 0-88-39.4-88-88c0-29.8 14.8-56.1 37.4-72c14.3-10.1 31.8-16 50.6-16c2.7 0 5.3 .1 7.9 .3c44.9 4 80.1 41.7 80.1 87.7c0 48.6-39.4 88-88 88z" />
-                </svg>
-                My Farms
+            <button id="actionButton" class="my-farms">
+                🚜 My Farms
             </button>
-            <button class="earnings">
-                <svg xmlns="http://www.w3.org/2000/svg" height="25px" width="25px" viewbox="0 0 512 512">
-                    <path fill="#1c1c1c"
-                        d="M320 96L192 96 144.6 24.9C137.5 14.2 145.1 0 157.9 0L354.1 0c12.8 0 20.4 14.2 13.3 24.9L320 96zM192 128l128 0c3.8 2.5 8.1 5.3 13 8.4C389.7 172.7 512 250.9 512 416c0 53-43 96-96 96L96 512c-53 0-96-43-96-96C0 250.9 122.3 172.7 179 136.4c0 0 0 0 0 0s0 0 0 0c4.8-3.1 9.2-5.9 13-8.4zm84 88c0-11-9-20-20-20s-20 9-20 20l0 14c-7.6 1.7-15.2 4.4-22.2 8.5c-13.9 8.3-25.9 22.8-25.8 43.9c.1 20.3 12 33.1 24.7 40.7c11 6.6 24.7 10.8 35.6 14l1.7 .5c12.6 3.8 21.8 6.8 28 10.7c5.1 3.2 5.8 5.4 5.9 8.2c.1 5-1.8 8-5.9 10.5c-5 3.1-12.9 5-21.4 4.7c-11.1-.4-21.5-3.9-35.1-8.5c-2.3-.8-4.7-1.6-7.2-2.4c-10.5-3.5-21.8 2.2-25.3 12.6s2.2 21.8 12.6 25.3c1.9 .6 4 1.3 6.1 2.1c0 0 0 0 0 0s0 0 0 0c8.3 2.9 17.9 6.2 28.2 8.4l0 14.6c0 11 9 20 20 20s20-9 20-20l0-13.8c8-1.7 16-4.5 23.2-9c14.3-8.9 25.1-24.1 24.8-45c-.3-20.3-11.7-33.4-24.6-41.6c-11.5-7.2-25.9-11.6-37.1-15c0 0 0 0 0 0l-.7-.2c-12.8-3.9-21.9-6.7-28.3-10.5c-5.2-3.1-5.3-4.9-5.3-6.7c0-3.7 1.4-6.5 6.2-9.3c5.4-3.2 13.6-5.1 21.5-5c9.6 .1 20.2 2.2 31.2 5.2c10.7 2.8 21.6-3.5 24.5-14.2s-3.5-21.6-14.2-24.5c-6.5-1.7-13.7-3.4-21.1-4.7l0-13.9z" />
-                </svg>
-                Earnings
+            <button id="actionButton" class="earnings">
+                💰 Earnings
             </button>
         </div>
-        <div class="projectBox">
-            <div id="airdropList"></div>
+        
+        <hr />
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <input type="radio" id="tab1" name="tabs" checked>
+            <label for="tab1">🪂 Airdrops</label>
+
+            <input type="radio" id="tab2" name="tabs">
+            <label for="tab2">💼 Wallets</label>
+
+            <input type="radio" id="tab3" name="tabs">
+            <label for="tab3">🌱 Suggestions</label>
+
+            <div class="tab-content">
+                <div class="tab-pane fade-in" id="content1">
+                    <div class="projectBox">
+                        <p>Projects you're currently farming :</p>
+                        <div id="airdropList"></div>
+                        <input type="text" id="airdropName" placeholder="Airdrop Token Symbol (e.g. solana)" />
+                        <input type="number" id="airdropAmount" placeholder="Airdrop Amount Received" />
+                        <input type="text" id="airdropImage" placeholder="Token Logo URL (optional)" />
+                        <input type="checkbox" id="airdropClaimed" /><a>Have you already claimed this airdrop ?</a>
+                        <button id="addAirdropBtn">Save Project</button>
+                    </div>
+
+                    <!--Add new airdrop-->
+                </div>
+                <div class="tab-pane fade-in" id="content2">
+                    <h3>🦊 Ethereum & EVM-Compatible Wallets</h3><hr/>
+                    <p>My Farms content here...</p>
+                    <h3>👻 Solana (Phantom) Wallets</h3><hr/>
+                    <p>My Farms content here...</p>
+                    <h3>💼 Other Wallets</h3><hr/>
+                    <p>My Farms content here...</p>
+                </div>
+                <div class="tab-pane fade-in" id="content3">
+                    <p>Earnings content here...</p>
+                </div>
+            </div>
         </div>
-
-        <!--Add new airdrop-->
-        <input type="text" id="airdropName" placeholder="Enter Ticker Name" />
-        <input type="number" id="airdropAmount" placeholder="Coin Amount" />
-        <input type="text" id="airdropImage" placeholder="Image URL" />
-        <button id="addAirdropBtn">Add Airdrop</button>
-
     </div>
-
-
-    <!-- remove display none -->
     <img src="./assets/money.gif" alt="Money GIF" class="money-gif">
 
 </body>
