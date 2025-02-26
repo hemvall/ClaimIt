@@ -1,12 +1,152 @@
 import { getAirdrops, addAirdrop, updateAirdrop, deleteAirdrop } from "./db.js";
 
+async function loadWallets() {
+    try {
+        const response = await fetch("https://localhost:7000/Wallets");
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const wallets = await response.json();
+        const container = document.querySelector("#content2");
+        container.innerHTML = ""; // Clear previous content
+
+        wallets.forEach(wallet => {
+            const walletDiv = document.createElement("div");
+            walletDiv.className = "walletRow";
+
+            // Create label for the wallet
+            const label = document.createElement("h3");
+            label.textContent = wallet.label + " ";
+            label.style.fontSize = "18px";
+            label.style.fontWeight = "600"; // Slightly bold for emphasis
+
+            // Create address element
+            const address = document.createElement("p");
+            address.textContent = wallet.address.slice(0, 6) + "..." + wallet.address.slice(-6);
+            address.style.fontSize = "14px";
+            address.style.color = "#888"; // Light gray color to differentiate from label
+            address.style.marginTop = "5px"; // Space between label and address
+
+            // Set platform icon based on the wallet platform
+            let platformIcon = "";
+            if (wallet.platform == "Phantom") {
+                platformIcon = "https://187760183-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MVOiF6Zqit57q_hxJYp%2Fuploads%2FHEjleywo9QOnfYebBPCZ%2FPhantom_SVG_Icon.svg?alt=media&token=71b80a0a-def7-4f98-ae70-5e0843fdaaec";
+            } else {
+                platformIcon = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/2048px-MetaMask_Fox.svg.png";
+            }
+
+            // Create the platform icon element
+            const platformIconElement = document.createElement("img");
+            platformIconElement.src = platformIcon;
+            platformIconElement.alt = wallet.platform;
+            platformIconElement.height = 20;  // Adjust size as needed
+            platformIconElement.style.marginLeft = "10px";
+            platformIconElement.style.verticalAlign = "middle";  // Align with text vertically
+
+            // Append platform icon, label, and address to walletDiv
+            walletDiv.appendChild(platformIconElement);
+            walletDiv.appendChild(label);
+            walletDiv.appendChild(address);
+
+            // Add walletDiv to container
+            container.appendChild(walletDiv);
+        });
+
+    } catch (error) {
+        console.error("Error loading wallets:", error);
+    }
+}
+
+async function loadSuggestions() {
+    try {
+        const response = await fetch("https://localhost:7000/Suggestions");
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const suggestions = await response.json();
+        const container = document.querySelector("#content3");  // Assuming you have a container for suggestions
+        container.innerHTML = "";  // Clear previous content
+
+        for (const suggestion of suggestions) {
+            // Fetch the airdrop information using suggestion.airdropId
+            let airdropURL = `https://localhost:7000/Airdrops/${suggestion.airdropId}`;
+            const airdropResponse = await fetch(airdropURL);
+            const airdrop = await airdropResponse.json();
+
+            // Create a suggestion container
+            const suggestionDiv = document.createElement("div");
+            suggestionDiv.className = "suggestionRow";
+
+            // Airdrop Name and Icon container
+            const airdropContainer = document.createElement("div");
+            airdropContainer.className = "airdropContainer";
+
+            // Airdrop Name
+            const airdropName = document.createElement("h3");
+            airdropName.textContent = airdrop.label;
+            airdropName.classList.add("suggestionTitle");
+
+            // Airdrop Icon
+            const iconElement = document.createElement("img");
+            iconElement.src = airdrop.iconURL;
+            iconElement.alt = airdrop.label;
+            iconElement.height = 40;
+            iconElement.width = 40;
+            iconElement.classList.add("airdropIcon");
+
+            // Append the icon and name to the container
+            airdropContainer.appendChild(iconElement);
+            airdropContainer.appendChild(airdropName);
+
+            // Suggestion Potential
+            const potential = document.createElement("p");
+            potential.textContent = `Potential: $${suggestion.potential}`;
+            potential.classList.add("potential");
+
+            // Time Cost
+            const timeCost = document.createElement("p");
+            timeCost.textContent = `Time Cost: ${suggestion.timeCost} minutes`;
+            timeCost.classList.add("costInfo");
+
+            // Farm Cost
+            const farmCost = document.createElement("p");
+            farmCost.textContent = `Farm Cost: $${suggestion.farmCost}`;
+            farmCost.classList.add("costInfo");
+
+            // Tutorial Link
+            const tutorialLink = document.createElement("a");
+            tutorialLink.href = suggestion.tutorialSource;
+            tutorialLink.textContent = "View Tutorial";
+            tutorialLink.classList.add("tutorialLink");
+            tutorialLink.setAttribute("target", "_blank");
+
+            // Append the airdrop container (icon and name)
+            if (airdropResponse.ok) {
+                suggestionDiv.appendChild(airdropContainer);
+            }
+
+            // Append suggestion details
+            suggestionDiv.appendChild(potential);
+            suggestionDiv.appendChild(timeCost);
+            suggestionDiv.appendChild(farmCost);
+            suggestionDiv.appendChild(tutorialLink);
+
+            // Append suggestionDiv to the container
+            container.appendChild(suggestionDiv);
+        }
+
+    } catch (error) {
+        console.error("Error loading suggestions:", error);
+    }
+}
+
+
 async function loadAirdrops() {
     const airdrops = await getAirdrops();
     const container = document.getElementById("airdropList");
     container.innerHTML = "";
 
     let totalAmount = 0;
-
     for (const airdrop of airdrops) {
         const coinPrice = await fetchCoinPrice(airdrop.name) || 0;
         const amountValue = airdrop.amount * coinPrice;
@@ -134,6 +274,11 @@ async function markAsClaimed(id) {
     await updateAirdrop(id, true);
     loadAirdrops();
 }
+// Load wallets when the page loads
+document.addEventListener("DOMContentLoaded", loadWallets);
 
-// Charger les airdrops au démarrage
+// Load airdrops when the page loads
 document.addEventListener("DOMContentLoaded", loadAirdrops);
+
+// Load suggestions when the page loads
+document.addEventListener("DOMContentLoaded", loadSuggestions);

@@ -170,6 +170,112 @@ button.projectRow {
     background-color: #414141;
 }
 
+.airdropContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.walletRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #222222;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: #222222;
+    transition: background-color 0.3s;
+    cursor: auto;
+}
+
+.walletRow:hover {
+    background-color: #424242;
+}
+
+.walletRow h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+}
+
+.walletRow p {
+    margin-top: 5px;
+    margin-left: 10px;
+    color: #888;
+    font-size: 14px;
+}
+
+.walletRow img {
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+/* General Styles */
+.suggestionRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #222222;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.suggestionRow:hover {
+    background-color: #424242;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.suggestionTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+}
+
+.airdropIcon {
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.potential {
+    font-size: 1.2rem;
+    color: #2d862d;  /* Green color */
+    font-weight: 600;
+}
+
+.costInfo {
+    font-size: 1rem;
+    color: #888;
+    margin: 5px 0;
+}
+
+.tutorialLink {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.tutorialLink:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .suggestionRow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .airdropIcon {
+        margin-bottom: 10px;
+    }
+}
+
 #airdropList {
     width: 110%;
     /* Ensure the container stretches to the available width */
