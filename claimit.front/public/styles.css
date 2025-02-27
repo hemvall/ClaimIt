@@ -492,7 +492,8 @@ h3 {
 }
 
 #level-text {
-    color: white;
+    color: white !important;
+    align-items: center;
     font-size: 18px;
 }
 

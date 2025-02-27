@@ -103,7 +103,7 @@ async function loadTasks() {
                     <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
                     <input id="taskComplete" type="checkbox">
                     <span class="taskDescription">${task.label}<br>
-                        <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">View it</a>
+                        <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">Complete it now</a>
                     </span>
                 `;
             } else {
@@ -111,7 +111,7 @@ async function loadTasks() {
                     <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
                     <input id="taskComplete" type="checkbox">
                     <span class="taskDescription">[${task.type}] ${task.label}<br>
-                        <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">View it</a>
+                        <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">Complete it now</a>
                     </span>
                 `;
             }
@@ -276,32 +276,37 @@ async function loadAirdrops() {
 
 
 function updateProgressBar(totalAmount) {
-    let level = 1;
+    let rank = "Bronze";
+    let rankIcon = "https://static.wikia.nocookie.net/leagueoflegends/images/c/cb/Season_2023_-_Bronze.png/revision/latest?cb=20231007195824";
     let progress = 0;
     let sumToGet = 0;
 
     if (totalAmount >= 5000) {
         sumToGet = 10000 - totalAmount;
-        level = Math.floor(totalAmount / 5000) + 3;
+        rank = "Master";
+        rankIcon = "https://static.wikia.nocookie.net/leagueoflegends/images/6/64/Season_2023_-_Grandmaster.png/revision/latest?cb=20231007195830";
         progress = ((totalAmount - 5000) / 5000) * 100;
     } else if (totalAmount >= 1000) {
         sumToGet = 5000 - totalAmount;
-        level = Math.floor(totalAmount / 1000) + 3;
+        rank = "Platinum";
+        rankIcon = "https://static.wikia.nocookie.net/leagueoflegends/images/b/bd/Season_2023_-_Platinum.png/revision/latest?cb=20231007195833";
         progress = ((totalAmount - 1000) / 4000) * 100;
     } else if (totalAmount >= 500) {
         sumToGet = 1000 - totalAmount;
-        level = 3;
+        rank = "Gold";
+        rankIcon = "https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Season_2023_-_Gold.png/revision/latest?cb=20231007195829";
         progress = ((totalAmount - 500) / 500) * 100;
     } else if (totalAmount >= 100) {
         sumToGet = 500 - totalAmount;
-        level = 2;
+        rank = "Silver";
+        rankIcon = "https://static.wikia.nocookie.net/leagueoflegends/images/c/c4/Season_2023_-_Silver.png/revision/latest?cb=20231007195834";
         progress = ((totalAmount - 100) / 400) * 100;
     } else {
         sumToGet = 100 - totalAmount;
         progress = (totalAmount / 100) * 100;
     }
     document.getElementById("progress-bar").style.width = `${progress}%`;
-    document.getElementById("level-text").innerHTML = `<strong>Level ${level}:</strong> ${sumToGet.toFixed(2)}$ left before next step`;
+    document.getElementById("level-text").innerHTML = `<strong><img height="50px" width="50px" src="${rankIcon}"/> ${rank} :</strong> ${sumToGet.toFixed(2)}$ left before next step`;
 }
 
 
