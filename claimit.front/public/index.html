@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <script type="module" src="./assets/scripts/popup.js"></script>
 
 </head>
@@ -24,8 +27,8 @@
             <a>49uj...CoxZ</a>
         </div>
         <div class="earnBox">
-            <h1 class="title">$0</h1>
-            <a class="subTitle">Total Airdrop Earnings</a>
+            <h1 id="title" class="title">$0</h1>
+            <a id="subTitle" class="subTitle">Total Airdrop Earnings</a>
         </div>
         <br><br>
         <div class="progress-container">
@@ -33,16 +36,21 @@
         </div>
         <p id="level-text">Level: 1</p>
 
-        <div class="container">
+        <!-- <div class="container">
             <button id="actionButton" class="my-farms">
-                🚜 My Farms
+                🎯 Quests
             </button>
             <button id="actionButton" class="earnings">
                 💰 Earnings
             </button>
+        </div> -->
+        <div class="task-container">
+            <h1 class="task-header">ⓘ [System Alert] Daily Quest</h1>
+            <p class="task-subheader">Complete your daily tasks to earn rewards and progress through your goals!</p>
+            <p class="task-goals">Goals</p>
+            <div id="tasks"></div>
+            <!-- <button onclick="addTask()">+ Add Task</button>-->
         </div>
-
-        <hr />
         <!-- Tab Navigation -->
         <div class="tab-nav">
             <input type="radio" id="tab1" name="tabs" checked>
@@ -57,13 +65,15 @@
             <div class="tab-content">
                 <div class="tab-pane fade-in" id="content1">
                     <div class="projectBox">
-                        <p>Projects you're currently farming :</p>
                         <div id="airdropList"></div>
-                        <input type="text" id="airdropName" placeholder="Airdrop Token Symbol (e.g. solana)" />
-                        <input type="number" id="airdropAmount" placeholder="Airdrop Amount Received" />
-                        <input type="text" id="airdropImage" placeholder="Token Logo URL (optional)" />
-                        <input type="checkbox" id="airdropClaimed" /><a>Have you already claimed this airdrop ?</a>
-                        <button id="addAirdropBtn">Save Project</button>
+                        <a id="showForm">Add new Project</a>
+                        <div class="AddAirdropForm" id="addAirdropForm" style="display: none;">
+                            <input type="text" id="airdropName" placeholder="Airdrop Token Symbol (e.g. solana)" />
+                            <input type="number" id="airdropAmount" placeholder="Airdrop Amount Received" />
+                            <input type="text" id="airdropImage" placeholder="Token Logo URL (optional)" />
+                            <input type="checkbox" id="airdropClaimed" /><a>Have you already claimed this airdrop?</a>
+                            <button id="addAirdropBtn">Save Project</button>
+                        </div>
                     </div>
                     <!--Add new airdrop-->
                 </div>

@@ -1,5 +1,20 @@
 import { getAirdrops, addAirdrop, updateAirdrop, deleteAirdrop } from "./db.js";
 
+let completedTasks = 0;
+let totalTasks = 0;
+
+function completeTask(button) {
+    button.parentElement.remove();
+    completedTasks++;
+    updateProgress();
+}
+
+function updateProgress() {
+    const progressBar = document.getElementById("progress");
+    const percent = totalTasks ? (completedTasks / totalTasks) * 100 : 0;
+    progressBar.style.width = percent + "%";
+}
+
 async function loadWallets() {
     try {
         const response = await fetch("https://localhost:7000/Wallets");
@@ -39,9 +54,9 @@ async function loadWallets() {
             const platformIconElement = document.createElement("img");
             platformIconElement.src = platformIcon;
             platformIconElement.alt = wallet.platform;
-            platformIconElement.height = 20;  // Adjust size as needed
+            platformIconElement.height = 30;
             platformIconElement.style.marginLeft = "10px";
-            platformIconElement.style.verticalAlign = "middle";  // Align with text vertically
+            platformIconElement.style.verticalAlign = "middle";
 
             // Append platform icon, label, and address to walletDiv
             walletDiv.appendChild(platformIconElement);
@@ -57,6 +72,57 @@ async function loadWallets() {
     }
 }
 
+async function loadTasks() {
+    try {
+        const response = await fetch("https://localhost:7000/Tasks");
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const tasks = await response.json();
+        const taskList = document.getElementById("tasks");
+
+        for (const task of tasks) {
+            let airdropLabel = "";
+            let airdropImage = "";
+            try {
+                const airdropResponse = await fetch(`https://localhost:7000/Airdrops/${task.airdropId}`);
+                if (airdropResponse.ok) {
+                    const airdrop = await airdropResponse.json();
+                    airdropLabel = airdrop.label;
+                    airdropImage = airdrop.iconURL;
+                }
+            } catch (airdropError) {
+                console.error("Error fetching airdrop details:", airdropError);
+            }
+
+            const taskdiv = document.createElement("div");
+            taskdiv.className = "task";
+
+            if (task.type === "Once") {
+                taskdiv.innerHTML = `
+                    <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
+                    <input id="taskComplete" type="checkbox">
+                    <span class="taskDescription">${task.label}<br>
+                        <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">View it</a>
+                    </span>
+                `;
+            } else {
+                taskdiv.innerHTML = `
+                    <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
+                    <input id="taskComplete" type="checkbox">
+                    <span class="taskDescription">[${task.type}] ${task.label}<br>
+                        <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">View it</a>
+                    </span>
+                `;
+            }
+
+            taskList.appendChild(taskdiv);
+        }
+    } catch (error) {
+        console.error("Error loading tasks:", error);
+    }
+}
+
 async function loadSuggestions() {
     try {
         const response = await fetch("https://localhost:7000/Suggestions");
@@ -64,29 +130,24 @@ async function loadSuggestions() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const suggestions = await response.json();
-        const container = document.querySelector("#content3");  // Assuming you have a container for suggestions
+        const container = document.querySelector("#content3");
         container.innerHTML = "";  // Clear previous content
 
         for (const suggestion of suggestions) {
-            // Fetch the airdrop information using suggestion.airdropId
             let airdropURL = `https://localhost:7000/Airdrops/${suggestion.airdropId}`;
             const airdropResponse = await fetch(airdropURL);
             const airdrop = await airdropResponse.json();
 
-            // Create a suggestion container
             const suggestionDiv = document.createElement("div");
             suggestionDiv.className = "suggestionRow";
 
-            // Airdrop Name and Icon container
             const airdropContainer = document.createElement("div");
             airdropContainer.className = "airdropContainer";
 
-            // Airdrop Name
             const airdropName = document.createElement("h3");
             airdropName.textContent = airdrop.label;
             airdropName.classList.add("suggestionTitle");
 
-            // Airdrop Icon
             const iconElement = document.createElement("img");
             iconElement.src = airdrop.iconURL;
             iconElement.alt = airdrop.label;
@@ -94,46 +155,45 @@ async function loadSuggestions() {
             iconElement.width = 40;
             iconElement.classList.add("airdropIcon");
 
-            // Append the icon and name to the container
+            const actionButton = document.createElement("button");
+            actionButton.textContent = "Join project";
+            actionButton.classList.add("minimalistButton");
+            actionButton.onclick = () => window.open(airdrop.websiteURL, "_blank"); // Open airdrop website
+
             airdropContainer.appendChild(iconElement);
             airdropContainer.appendChild(airdropName);
+            airdropContainer.appendChild(actionButton);
 
-            // Suggestion Potential
             const potential = document.createElement("p");
             potential.textContent = `Potential: $${suggestion.potential}`;
             potential.classList.add("potential");
 
-            // Time Cost
             const timeCost = document.createElement("p");
             timeCost.textContent = `Time Cost: ${suggestion.timeCost} minutes`;
             timeCost.classList.add("costInfo");
 
-            // Farm Cost
             const farmCost = document.createElement("p");
             farmCost.textContent = `Farm Cost: $${suggestion.farmCost}`;
             farmCost.classList.add("costInfo");
 
-            // Tutorial Link
             const tutorialLink = document.createElement("a");
             tutorialLink.href = suggestion.tutorialSource;
             tutorialLink.textContent = "View Tutorial";
             tutorialLink.classList.add("tutorialLink");
             tutorialLink.setAttribute("target", "_blank");
 
-            // Append the airdrop container (icon and name)
             if (airdropResponse.ok) {
                 suggestionDiv.appendChild(airdropContainer);
             }
 
-            // Append suggestion details
             suggestionDiv.appendChild(potential);
             suggestionDiv.appendChild(timeCost);
             suggestionDiv.appendChild(farmCost);
             suggestionDiv.appendChild(tutorialLink);
 
-            // Append suggestionDiv to the container
             container.appendChild(suggestionDiv);
         }
+
 
     } catch (error) {
         console.error("Error loading suggestions:", error);
@@ -142,6 +202,11 @@ async function loadSuggestions() {
 
 
 async function loadAirdrops() {
+    // Show the skeleton loaders for title, subtitle, and progress bar
+    document.querySelector(".title").classList.add('skeleton');
+    document.querySelector(".subTitle").classList.add('skeleton');
+    document.querySelector(".progress-bar").classList.add('skeleton');
+
     const airdrops = await getAirdrops();
     const container = document.getElementById("airdropList");
     container.innerHTML = "";
@@ -187,28 +252,42 @@ async function loadAirdrops() {
         claimedText.classList.add(airdrop.claimed ? "claimed" : "notClaimed");
         claimedText.textContent = airdrop.claimed ? "Claimed" : "Farming";
 
-
         infoDiv.appendChild(label);
         infoDiv.appendChild(claimedText);
         infoDiv.appendChild(amount);
         button.appendChild(img);
         button.appendChild(infoDiv);
+
         container.appendChild(button);
     }
-    const totalAmountElement = document.querySelector(".title");
+
+    // Update the title and subtitle with the total amount
+    const totalAmountElement = document.querySelector("#title");
     totalAmountElement.textContent = `$${totalAmount.toFixed(2)}`;
+
+    // Update progress bar with the total amount
     updateProgressBar(totalAmount);
+
+    // Hide the skeleton loaders after data is loaded
+    document.querySelector("#title").classList.remove('skeleton');
+    document.querySelector("#subTitle").classList.remove('skeleton');
+    document.querySelector(".progress-bar").classList.remove('skeleton');
 }
+
 
 function updateProgressBar(totalAmount) {
     let level = 1;
     let progress = 0;
     let sumToGet = 0;
 
-    if (totalAmount >= 1000) {
-        sumToGet = 999999;
-        level = Math.floor(totalAmount / 1000) + 3; // Beyond level 3
-        progress = 100;
+    if (totalAmount >= 5000) {
+        sumToGet = 10000 - totalAmount;
+        level = Math.floor(totalAmount / 5000) + 3;
+        progress = ((totalAmount - 5000) / 5000) * 100;
+    } else if (totalAmount >= 1000) {
+        sumToGet = 5000 - totalAmount;
+        level = Math.floor(totalAmount / 1000) + 3;
+        progress = ((totalAmount - 1000) / 4000) * 100;
     } else if (totalAmount >= 500) {
         sumToGet = 1000 - totalAmount;
         level = 3;
@@ -221,8 +300,6 @@ function updateProgressBar(totalAmount) {
         sumToGet = 100 - totalAmount;
         progress = (totalAmount / 100) * 100;
     }
-
-
     document.getElementById("progress-bar").style.width = `${progress}%`;
     document.getElementById("level-text").innerHTML = `<strong>Level ${level}:</strong> ${sumToGet.toFixed(2)}$ left before next step`;
 }
@@ -270,6 +347,11 @@ document.getElementById('addAirdropBtn').addEventListener('click', async functio
     loadAirdrops();
 });
 
+document.getElementById("showForm").addEventListener("click", function () {
+    const form = document.getElementById("addAirdropForm");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+});
+
 async function markAsClaimed(id) {
     await updateAirdrop(id, true);
     loadAirdrops();
@@ -282,3 +364,6 @@ document.addEventListener("DOMContentLoaded", loadAirdrops);
 
 // Load suggestions when the page loads
 document.addEventListener("DOMContentLoaded", loadSuggestions);
+
+// Load Tasks when the page loads
+document.addEventListener("DOMContentLoaded", loadTasks);
