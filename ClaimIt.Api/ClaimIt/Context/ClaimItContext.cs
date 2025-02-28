@@ -9,6 +9,7 @@ namespace claimit_api.Context
         public DbSet<Suggestions>? Suggestions { get; set; }
         public DbSet<Wallets>? Wallets { get; set; }
         public DbSet<Tasks>? Tasks { get; set; }
+        public DbSet<Notifications>? Notifications { get; set; }
         public DbSet<User>? Users{ get; set; }
         public DbSet<Subscription>? Subscriptions { get; set; }
 

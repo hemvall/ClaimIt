@@ -566,7 +566,8 @@ h3 {
 .taskDescription {
     font-family: 'Space Grotesk', sans-serif;
     margin-left: 5px;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .taskComplete:hover {

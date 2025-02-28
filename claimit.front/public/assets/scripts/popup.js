@@ -100,16 +100,16 @@ async function loadTasks() {
 
             if (task.type === "Once") {
                 taskdiv.innerHTML = `
-                    <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
                     <input id="taskComplete" type="checkbox">
+                    <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
                     <span class="taskDescription">${task.label}<br>
-                        <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">Complete it now</a>
+                    <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">Complete it now</a>
                     </span>
                 `;
             } else {
                 taskdiv.innerHTML = `
-                    <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
                     <input id="taskComplete" type="checkbox">
+                    <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
                     <span class="taskDescription">[${task.type}] ${task.label}<br>
                         <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">Complete it now</a>
                     </span>

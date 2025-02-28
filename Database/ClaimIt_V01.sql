@@ -64,7 +64,15 @@ CREATE TABLE `UserTask`(
     `TaskId` BIGINT NOT NULL,
     `Completed` BOOLEAN NOT NULL
 );
-
+CREATE TABLE `Notifications`(
+    `Id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `AirdropId` BIGINT NOT NULL,
+    `Subject` VARCHAR(255) NOT NULL,
+    `Body` VARCHAR(255) NOT NULL,
+    `URL` VARCHAR(255) NOT NULL,
+    `ExpiresAt` DATETIME,
+    `CreatedAt` DATETIME NOT NULL
+);
 
 INSERT INTO `airdrops`(`Label`, `Description`, `Ticker`, `CoinGeckoTicker`, `IconURL`, `WebsiteURL`, `XAccount`, `Status`, `Phase`, `StartDate`, `EndDate`, `Claimed`, `VerifiedByTeam`, `CreatedAt`, `UpdatedAt`) 
 VALUES ("NodePay", "Nodepay is a platform for AI training and development. Their mission is to provide an ecosystem for users to own and access AI with real time data intelligence.", "NC", "https://api.coingecko.com/api/v3/simple/price?ids=nodecoin&vs_currencies=usd", "https://play-lh.googleusercontent.com/x7F1sCseMpHlWuBYYh3vUaXvEASveBMCO6bejozZ7_FGQODAEKOYlcnNB-91xLXGrg=w240-h480-rw", "https://www.nodepay.com", "NodePay", "Live", "S4", '2024-10-26 14:30:00', '2025-04-26 14:30:00', 0, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -78,3 +86,5 @@ INSERT INTO `tasks`(`AirdropId`, `Label`, `Type`, `URL`, `Deadline`, `CreatedAt`
 VALUES (1, "Claim Daily bonus", "Daily", "https://www.nodepay.ai/", "2025-03-01 14:30:00", CURRENT_TIMESTAMP);
 INSERT INTO `tasks`(`AirdropId`, `Label`, `Type`, `URL`, `Deadline`, `CreatedAt`) 
 VALUES (1, "Stake a minimum of 10 $NC", "Once", "https://www.nodefoundation.com", "2025-08-01 14:30:00", CURRENT_TIMESTAMP);
+INSERT INTO `Notifications`(`AirdropId`, `Subject`, `Body`, `URL`, `ExpiresAt`, `CreatedAt`) 
+VALUES (1, "$NC Season 4 Claim is now Live!", "You can from now go tp https://www.nodefoundation.com and check if you are eligible for S4 rewards.", "https://www.nodefoundation.com", "2025-08-01 14:30:00", "2024-07-01 14:30:00");
