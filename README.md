@@ -1,28 +1,27 @@
 # 🚀 ClaimIt – Airdrop Tracking Chrome Extension
 
 ## 📜 Project Description
-**ClaimIt** is a Chrome extension designed to help crypto users **track and claim airdrops** automatically. Stay ahead of the game by never missing a free token opportunity again!
+**ClaimIt** is a Web Extension designed to help crypto users **track and farm airdrops** automatically. Stay ahead of the game by never missing a free token opportunity again!
+Stop spending time hunting for airdrop opportunities and tracking details across multiple sources—ClaimIt handles it all for you!
 
 ## 🛠 Features
 - 📊 **Airdrop Dashboard** – View past, active, and upcoming airdrops
+- 🎯 **Live Quests** - Engaging missions designed to enhance participation and optimize your farming.
 - 🔔 **Real-time Alerts** – Get notified when you qualify for an airdrop
+- 🌱 **Suggested Projects** - Offers a list of projects you might be interested in farming.
 - 🔗 **Wallet Integration** – Connect your wallets (MetaMask, WalletConnect)
 - 🔍 **Airdrop Finder** – Scrape new airdrop opportunities and get notified when eligible
-- 🌱 **Suggested Projects** - Offers a list of projects you might be interested in farming.
 
 ## ⚙️ Usage
-
 1. **Connect your Wallet**: Open the extension and follow the prompts to connect your crypto wallet.
 2. **Browse Airdrop Opportunities**: Visit supported airdrop websites, and ClaimIt will automatically detect and list eligible airdrops.
 3. **Claim Your Rewards**: When an airdrop is available, click the "Claim" button in the dashboard to complete the process.
 4. **Receive Notifications**: Get real-time alerts when a new airdrop is available for your wallet.
 
 ## 👫 Contributing
-
 We welcome contributions! If you'd like to improve ClaimIt, feel free to fork the repository and submit a pull request.
 
 ### Steps to Contribute
-
 1. Fork the repository.
 2. Clone your fork locally.
 3. Make changes or add features.
