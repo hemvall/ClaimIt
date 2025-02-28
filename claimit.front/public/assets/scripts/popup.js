@@ -306,7 +306,8 @@ function updateProgressBar(totalAmount) {
         progress = (totalAmount / 100) * 100;
     }
     document.getElementById("progress-bar").style.width = `${progress}%`;
-    document.getElementById("level-text").innerHTML = `<strong><img height="50px" width="50px" src="${rankIcon}"/> ${rank} :</strong> ${sumToGet.toFixed(2)}$ left before next step`;
+    document.getElementById("rank-icon").innerHTML = `<img height="100" width="100; margin-top: 25px;" src="${rankIcon}"/> `;
+    document.getElementById("level-text").innerHTML = `<strong>${rank} :</strong> ${sumToGet.toFixed(2)}$ left before next step`;
 }
 
 
@@ -372,3 +373,41 @@ document.addEventListener("DOMContentLoaded", loadSuggestions);
 
 // Load Tasks when the page loads
 document.addEventListener("DOMContentLoaded", loadTasks);
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("change", function (event) {
+        if (event.target.id === "taskComplete" && event.target.checked) {
+            triggerConfetti();
+        }
+    });
+});
+
+function triggerConfetti() {
+    const confettiContainer = document.createElement("div");
+    confettiContainer.classList.add("confetti-container");
+    document.body.appendChild(confettiContainer);
+
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.top = `${Math.random() * 50 - 20}vh`; // Randomize start position (-20vh to 50vh)
+        confetti.style.backgroundColor = getRandomColor();
+        confetti.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random fall speed
+
+        confettiContainer.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 1500);
+    }
+
+    setTimeout(() => {
+        confettiContainer.remove();
+    }, 1000);
+}
+
+function getRandomColor() {
+    const colors = ["#ff0a54", "#ff477e", "#ff7096", "#ff85a1", "#ff99ac", "#fb5607", "#ffbe0b", "#3a86ff"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
