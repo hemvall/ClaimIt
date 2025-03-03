@@ -39,3 +39,5 @@ We welcome contributions! If you'd like to improve ClaimIt, feel free to fork th
 3. Enable "Developer mode" at the top-right of the Extensions page.
 4. Click "Load unpacked" and select the directory where you've downloaded and extracted the ClaimIt files.
 5. The extension should now be installed and ready to use.
+
+# Follow us on twitter : @ClaimIt_App
