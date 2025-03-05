@@ -17,6 +17,9 @@ body {
     font-family: 'Space Grotesk', sans-serif;
 }
 
+.hide {
+    display: none;
+}
 
 .pageContainer {
     display: flex;
@@ -40,7 +43,7 @@ body {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    margin-left: 15px;
+    margin-left: 8px;
 }
 
 .money-gif {
@@ -142,33 +145,55 @@ button {
 }
 
 button.projectRow {
-    padding: 10px;
-    border-radius: 15px;
+    padding: 12px 20px;
+    border-radius: 12px;
     border: none;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
-    transition: background-color .8s ease, transform 0.2s ease;
+    transition: background-color .3s ease, transform 0.3s ease;
     display: flex;
-    justify-content: center;
     align-items: center;
-
-}
-
-.projectRow {
+    justify-content: flex-start;
+    width: 90%;
+    margin: 8px auto;
     background-color: #222222;
-    width: 85%;
-    padding: 15px 20px;
-    margin: 4px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 600;
 }
 
 .projectRow:hover {
     background-color: #414141;
+    transform: scale(1.05);
 }
+
+.projectRow img.airdrop-image {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.projectRow .notif-text h3 {
+    font-size: 16px;
+    color: #bbb;
+    margin: 0;
+    padding: 0;
+    text-align: start;
+
+}
+
+.projectRow .notif-text p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+    padding-top: 5px;
+    text-align: start;
+}
+.projectRow .notif-date {
+    font-size: 13px;
+    color:#999999;
+}
+
 
 .airdropContainer {
     display: flex;
@@ -495,6 +520,7 @@ h3 {
     color: white !important;
     font-size: 18px;
     margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 #rank-icon {
@@ -515,7 +541,7 @@ h3 {
 
 .fade-in {
     opacity: 0;
-    animation: fadeIn .5s ease-out forwards;
+    animation: fadeIn 1s ease-out forwards;
 }
 
 .claimedStatus {
@@ -561,6 +587,15 @@ h3 {
     cursor: pointer;
     border-radius: 5px;
     transition: 0.3s;
+}
+
+.taskHidden {
+    background-color: #00cd0a;
+    color: white;
+}
+
+.taskHidden .tutorialLink {
+    display: none;
 }
 
 .taskDescription {
@@ -672,9 +707,11 @@ h3 {
     0% {
         background-color: #ddd;
     }
+
     50% {
         background-color: #ccc;
     }
+
     100% {
         background-color: #ddd;
     }
@@ -705,8 +742,80 @@ h3 {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
+
     100% {
         transform: translateY(100vh) rotate(720deg);
         opacity: 0;
     }
+}
+
+.bell-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.bell {
+    font-size: 26px;
+    color: #333;
+    transition: 0.3s ease-in-out;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.bell-container:hover .bell {
+    transform: scale(1.2);
+    background-color: rgb(138, 84, 2, 0.8);
+}
+
+.badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notificationPopup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1c1c1c;
+    z-index: 999999;
+}
+
+.notification-container {
+    margin-top: 15px;
+}
+
+#notificationsList{
+    color: white;
+    font-size: 16px;
+}
+
+.closePopup {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    color: red;
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.closePopup:hover {
+    color: rgba(255, 72, 72, 0.604);
 }

@@ -7,14 +7,6 @@
       "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\context\\claimitcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|d:\\repos\\claimit\\claimit.api\\claimit\\models\\notifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\models\\notifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|d:\\repos\\claimit\\claimit.api\\claimit\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|d:\\repos\\claimit\\claimit.api\\claimit\\models\\suggestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\models\\suggestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -53,6 +45,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|d:\\repos\\claimit\\claimit.api\\claimit\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|d:\\repos\\claimit\\claimit.api\\claimit\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|d:\\repos\\claimit\\claimit.api\\claimit\\models\\notifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\models\\notifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +66,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "NotificationsController.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\NotificationsController.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Controllers\\NotificationsController.cs",
@@ -74,12 +74,11 @@
               "RelativeToolTip": "ClaimIt\\Controllers\\NotificationsController.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAawCgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T13:46:02.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-28T13:46:02.051Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 12,
               "Title": "Notifications.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Notifications.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\Notifications.cs",
@@ -87,12 +86,11 @@
               "RelativeToolTip": "ClaimIt\\Models\\Notifications.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T13:45:18.887Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-28T13:45:18.887Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Tasks.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Tasks.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\Tasks.cs",
@@ -100,12 +98,11 @@
               "RelativeToolTip": "ClaimIt\\Models\\Tasks.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:25:42.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T13:25:42.606Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Wallets.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Wallets.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\Wallets.cs",
@@ -113,8 +110,7 @@
               "RelativeToolTip": "ClaimIt\\Models\\Wallets.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAA+wA0AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T13:05:34.479Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T13:05:34.479Z"
             },
             {
               "$type": "Document",
@@ -131,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "SuggestionsController.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\SuggestionsController.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Controllers\\SuggestionsController.cs",
@@ -139,12 +135,11 @@
               "RelativeToolTip": "ClaimIt\\Controllers\\SuggestionsController.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAuwBwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T12:57:50.835Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T12:57:50.835Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Suggestions.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Suggestions.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\Suggestions.cs",
@@ -152,12 +147,11 @@
               "RelativeToolTip": "ClaimIt\\Models\\Suggestions.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAuwAgAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T10:59:47.752Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T10:59:47.752Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "AirdropsController.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\AirdropsController.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Controllers\\AirdropsController.cs",
@@ -165,12 +159,11 @@
               "RelativeToolTip": "ClaimIt\\Controllers\\AirdropsController.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAArwAsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T11:01:51.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T11:01:51.946Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "WalletsController.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\WalletsController.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Controllers\\WalletsController.cs",
@@ -182,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "Airdrops.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Airdrops.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\Airdrops.cs",
@@ -194,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\appsettings.json",
               "RelativeDocumentMoniker": "ClaimIt\\appsettings.json",
@@ -206,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 10,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\User.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\User.cs",
@@ -218,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "UsersController.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Controllers\\UsersController.cs",

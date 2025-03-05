@@ -10,32 +10,36 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
     <script type="module" src="./assets/scripts/popup.js"></script>
 
 </head>
 
 <body>
+    <div id="notificationPopup"></div>
     <div class="pageContainer">
-        <div class="header">
+        <div class="header fade-in">
             <div class="ctn">
                 <img alt="airdrop" style="height: 60px; width: 60px;" src="./assets/airdrop.png" />
-                <h1>ClaimIt</h1>
+                <h1>ClaimIt</h1><a>Beta</a>
             </div>
-            <a>49uj...CoxZ</a>
+            <div class="bell-container" id="notificationIcon">
+                <span class="bell">&#128276;</span>
+                <span class="badge">3</span>
+            </div>
         </div>
-        <div class="earnBox">
+        <div class="earnBox fade-in">
             <h1 id="title" class="title">$0</h1>
             <a id="subTitle" class="subTitle">Total Airdrop Earnings</a>
         </div>
-        <br><br>
+
+        <div id="rank-icon"></div>
+
         <div class="progress-container">
             <div id="progress-bar" class="progress-bar"></div>
         </div>
-        <div id="rank-icon"></div>
-        <div id="level-text" >Rank: ?</div>
+        <div id="level-text">Rank: ?</div>
 
         <!-- <div class="container">
             <button id="actionButton" class="my-farms">
