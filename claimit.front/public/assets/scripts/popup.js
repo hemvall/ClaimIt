@@ -17,7 +17,6 @@ document.getElementById('addAirdropBtn').addEventListener('click', async functio
     if (name && amount && image && claimed) {
         try {
             const result = await addAirdrop(name, amount, image, false); // Call the addAirdrop function from db.js
-            console.log('Airdrop added:', result);
             document.getElementById('airdropName').value = '';
             document.getElementById('airdropAmount').value = '';
             document.getElementById('airdropImage').value = '';
@@ -40,9 +39,9 @@ document.getElementById('notificationIcon').addEventListener('click', async func
         // Get the container where notifications will be displayed
         const container = document.querySelector("#notificationPopup");
         container.innerHTML = `
-            <div class="notificationPopup fade-in">
+            <div class="Popup fade-in">
                 <button id="closePopup" class="closePopup">❌</button>
-                <div class="notification-container">
+                <div class="Popup-container">
                     <h1>Notifications</h1>
                     <hr>
                     <div id="notificationsList"></div>
@@ -60,7 +59,6 @@ document.getElementById('notificationIcon').addEventListener('click', async func
                 const airdropResponse = await fetch(`https://localhost:7000/Airdrops/${notif.airdropId}`);
                 if (airdropResponse.ok) {
                     const airdrop = await airdropResponse.json();
-                    console.log(airdrop + airdrop.iconURL);
                     airdropImage = airdrop.iconURL;
                 }
             } catch (airdropError) {
@@ -69,11 +67,14 @@ document.getElementById('notificationIcon').addEventListener('click', async func
             const date = new Date(notif.createdAt);
 
             notifdiv.innerHTML = `
-                <img src="${airdropImage}"  class="airdrop-image"/>
-                <div class="notif-text">
-                    <h3>${notif.subject} <a class="notif-date">${date.toISOString().split('T')[0]}</a></h3>
-                    <p>${notif.body}</p>
-                </div>
+                <a class="notif-subject" href="${notif.url}" target="_blank">
+                    <img src="${airdropImage}"  class="airdrop-image"/>
+                    <div class="notif-text">
+                        <h3 class="notif-subject">${notif.subject} <br>
+                        <a class="notif-date">${date.toISOString().split('T')[0]}</a></h3>
+                        <p>${notif.body}</p>
+                    </div>
+                </a>
             `;
             notificationList.appendChild(notifdiv); // Append to the list
         }

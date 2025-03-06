@@ -36,7 +36,7 @@ namespace Users.Controllers
         {
             if (ex is null) return BadRequest();
 
-            User usr = _claimitContext.Users.FirstOrDefault(x => x.Mail == ex.Mail && x.Password == ex.Password);
+            User usr = _claimitContext.Users.FirstOrDefault(x => x.Username == ex.Username); // && x.Password == ex.Password
 
             if (usr is null) return NotFound();
 

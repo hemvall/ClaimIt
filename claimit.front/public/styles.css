@@ -162,12 +162,12 @@ button.projectRow {
 
 .projectRow:hover {
     background-color: #414141;
-    transform: scale(1.05);
+    transform: scale(1.025);
 }
 
 .projectRow img.airdrop-image {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 15px;
 }
@@ -184,16 +184,34 @@ button.projectRow {
 .projectRow .notif-text p {
     font-size: 16px;
     font-weight: 400;
+    font-family: 'Space Grotesk', sans-serif;
     color: #fff;
     margin: 0;
     padding-top: 5px;
     text-align: start;
 }
+
 .projectRow .notif-date {
     font-size: 13px;
-    color:#999999;
+    color: #999999;
 }
 
+.projectRow .notif-subject {
+    color: #1E90FF;
+}
+
+.airdropDetail {
+    cursor: auto;
+    color: white;
+}
+.airdropDetails {
+    display: block;
+    margin-left: 50px;
+}
+.airdropDetails p {
+    display: flex;
+    justify-content: flex-start;
+}
 
 .airdropContainer {
     display: flex;
@@ -783,7 +801,7 @@ h3 {
     align-items: center;
 }
 
-.notificationPopup {
+.Popup {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -794,13 +812,15 @@ h3 {
     z-index: 999999;
 }
 
-.notification-container {
+.Popup-container {
     margin-top: 15px;
+    color: white;
 }
 
-#notificationsList{
+#notificationsList {
     color: white;
     font-size: 16px;
+    margin-top: 20px;
 }
 
 .closePopup {

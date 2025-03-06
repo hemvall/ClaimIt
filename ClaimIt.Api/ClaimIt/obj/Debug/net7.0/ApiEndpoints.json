@@ -600,6 +600,173 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "UserAirdropAirdrop.Controllers.UserAirdropController",
+    "Method": "Get",
+    "RelativePath": "UserAirdrop",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClaimIt.Models.UserAirdrop, ClaimIt, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "UserAirdropAirdrop.Controllers.UserAirdropController",
+    "Method": "Post",
+    "RelativePath": "UserAirdrop",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userAirdrop",
+        "Type": "ClaimIt.Models.UserAirdrop",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ClaimIt.Models.UserAirdrop",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "UserAirdropAirdrop.Controllers.UserAirdropController",
+    "Method": "Put",
+    "RelativePath": "UserAirdrop/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ex",
+        "Type": "ClaimIt.Models.UserAirdrop",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ClaimIt.Models.UserAirdrop",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "UserAirdropAirdrop.Controllers.UserAirdropController",
+    "Method": "Delete",
+    "RelativePath": "UserAirdrop/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "aId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "uId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserAirdropAirdrop.Controllers.UserAirdropController",
+    "Method": "Get",
+    "RelativePath": "UserAirdrop/User/{uId}/Airdrop/{aId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "aId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "uId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ClaimIt.Models.UserAirdrop",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetSpecificUserAirdrop"
+  },
+  {
+    "ContainingType": "UserAirdropAirdrop.Controllers.UserAirdropController",
+    "Method": "Get",
+    "RelativePath": "UserAirdrop/User/{uId}/Airdrops",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ClaimIt.Models.UserAirdrop",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetUserAirdrops"
+  },
+  {
     "ContainingType": "Users.Controllers.UsersController",
     "Method": "Get",
     "RelativePath": "Users",

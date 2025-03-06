@@ -5,7 +5,6 @@ async function fetchCoinPrice(coinName) {
         const data = await response.json();
 
         const price = data[coinName]?.usd;
-        console.log(`${coinName} price: $${price}`);
         return price || 0;
     } catch (error) {
         console.error(`Error fetching ${coinName} price:`, error);
@@ -151,7 +150,7 @@ async function loadTasks() {
                     <input id="taskComplete" type="checkbox">
                     <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
                     <span class="taskDescription">${task.label}<br>
-                    <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">Complete it now</a>
+                    <a style="font-size: 12px;" class="tutorialLink" href="${task.url}" target="_blank">Complete it now</a>
                     </span>
                 `;
             } else {
@@ -159,7 +158,7 @@ async function loadTasks() {
                     <input id="taskComplete" type="checkbox">
                     <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
                     <span class="taskDescription">[${task.type}] ${task.label}<br>
-                        <a style="font-size: 12px;" class="tutorialLink" href="${task.URL}" target="_blank">Complete it now</a>
+                        <a style="font-size: 12px;" class="tutorialLink" href="${task.url}" target="_blank">Complete it now</a>
                     </span>
                 `;
             }
@@ -253,18 +252,23 @@ async function loadAirdrops() {
     document.querySelector(".title").classList.add('skeleton');
     document.querySelector(".subTitle").classList.add('skeleton');
     document.querySelector(".progress-bar").classList.add('skeleton');
-    const response = await fetch("https://localhost:7000/Airdrops");
+    const response = await fetch("https://localhost:7000/UserAirdrop/User/1/Airdrops");
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    const airdrops = await response.json();
+    const userAirdrops = await response.json();
+    console.log(userAirdrops);
     const container = document.getElementById("airdropList");
     container.innerHTML = "";
-    
+
     let totalAmount = 0;
-    for (const airdrop of airdrops) {
-        console.log("Airdrop : " + airdrop);
-        console.log("Ticker : " + airdrop.coinGeckoTicker);
+    for (const uAirdrop of userAirdrops) {
+        const resp = await fetch(`https://localhost:7000/Airdrops/${uAirdrop.airdropId}`);
+        if (!resp.ok) {
+            throw new Error(`HTTP error! Status: ${resp.status}`);
+        }
+        const airdrop = await resp.json();
+        console.log(airdrop);
         const coinPrice = await fetchCoinPrice(airdrop.coinGeckoTicker) || 0;
         const amountValue = 127 * coinPrice;
 
@@ -273,12 +277,7 @@ async function loadAirdrops() {
         const button = document.createElement("button");
         button.className = "projectRow";
         button.onclick = () => {
-            chrome.windows.create({
-                url: `airdrop.html?name=${encodeURIComponent(airdrop.label)}&amount=${airdrop.id}&image=${encodeURIComponent(airdrop.iconURL)}`,
-                type: "popup",
-                width: 400,
-                height: 600
-            });
+            openAirdropTab(uAirdrop, airdrop, coinPrice, amountValue);
         };
         const img = document.createElement("img");
         img.className = "coinIcon";
@@ -324,6 +323,57 @@ async function loadAirdrops() {
     document.querySelector("#title").classList.remove('skeleton');
     document.querySelector("#subTitle").classList.remove('skeleton');
     document.querySelector(".progress-bar").classList.remove('skeleton');
+}
+
+async function openAirdropTab(userAirdrop, airdrop, coinPrice, amountValue) {
+    let wallet = "";
+    try {
+        const resp = await fetch(`https://localhost:7000/Wallets/${userAirdrop.walletId}`);
+        if (resp.ok) {
+            wallet = await resp.json();
+        }
+    } catch (walletError) {
+        console.error("Error fetching wallet details:", walletError);
+    }
+    const container = document.querySelector("#airdropPopup");
+    container.innerHTML = `
+        <div class="Popup fade-in">
+            <button id="closePopup" class="closePopup">❌</button>
+            <div class="Popup-container">
+                <h1>${airdrop.label}</h1>
+                <hr style="color:grey; background-color: grey;">
+                <h2>${wallet.address.slice(0, 6) + "..." + wallet.address.slice(-6)}</h2>
+                <h3>Balance</h3>
+                <button class="projectRow airdropDetail">
+                    <img class="coinIcon" alt="airdrop.label" height="35" width="35" style="border-radius: 50%;" 
+                        src="${airdrop.iconURL}">
+                    <div style="display:block; margin-left: 30px">
+                        <div style="display:flex;">
+                        <a class="">${airdrop.label}</a>
+                        <a class="coinAmount" style="margin-left:5px;">$${coinPrice}</a>
+                        </div>
+                        <div style="display:flex;">
+                        <a class="">${amountValue.toFixed(2)} ${airdrop.coinGeckoTicker}</a>
+                        </div>
+                    </div>
+                </button>
+                <h3>Details</h3>
+                <div class="airdropDetails">
+                <p>Phase : ${airdrop.phase}</p>
+                <p>Network : ICO Base Mainnet</p>
+                <p>X : ${airdrop.xAccount}</p>
+                <p>Official Website : ${airdrop.websiteURL}</p>
+                <p>Verified : ${airdrop.verifiedByTeam}</p>
+                <p>Start Date : ${airdrop.startDate}</p>
+                <p>Ending Date: ${airdrop.endDate}</p>
+                </div>
+
+            </div>
+        </div>
+    `;
+    document.getElementById('closePopup').addEventListener('click', function () {
+        container.innerHTML = ``;
+    });
 }
 
 // async 
