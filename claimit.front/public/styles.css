@@ -17,6 +17,11 @@ body {
     font-family: 'Space Grotesk', sans-serif;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
 .hide {
     display: none;
 }
@@ -108,11 +113,31 @@ button {
     align-items: center;
 }
 
+.donateButton {
+    background: linear-gradient(90deg, #FF7EB3, #FF758C, #FF5E62);
+    border-color: #FF758C !important;
+    box-shadow: #FF758C 0px 0px 8px !important;
+    color: #fff;
+}
+
+.donateButton:focus {
+    outline: 3px solid #FF758C !important;
+}
+
+.donateButton:hover {
+    color: #fff !important;
+
+    border: 1px solid #FF758C !important;
+    /* Slight scale effect for a subtle hover */
+    box-shadow: 0 0 15px #FF758C !important;
+}
+
 #actionButton:focus {
     outline: 3px solid #57b3fe;
 }
 
-#actionButton {
+#actionButton,
+#copyButton, #saveAllocation {
     background-color: #57b3fe;
     border: 1px solid #57b3fe;
     color: #1c1c1c;
@@ -129,7 +154,18 @@ button {
     /* animation: pulse 1.5s infinite alternate; */
 }
 
-#actionButton:hover {
+#copyButton {
+    padding: 7px 12px;
+    margin: 0 15px;
+    font-size: 14px;
+}
+
+.countdown {
+    font-weight: bold;
+}
+
+#actionButton:hover,
+#copyButton:hover, #saveAllocation:hover {
     background-color: transparent;
     color: #57b3fe;
     border: 1px solid #57b3fe;
@@ -204,10 +240,12 @@ button.projectRow {
     cursor: auto;
     color: white;
 }
+
 .airdropDetails {
     display: block;
     margin-left: 50px;
 }
+
 .airdropDetails p {
     display: flex;
     justify-content: flex-start;
@@ -662,6 +700,14 @@ h3 {
     border: 1px solid #57b3fe;
 }
 
+.taskXp {
+    color: #00ff0d;
+}
+
+#openAllTasks {
+    font-size: 14px;
+}
+
 .task-container button {
     background: transparent;
     color: #57b3fe;
@@ -810,6 +856,59 @@ h3 {
     width: 100%;
     background-color: #1c1c1c;
     z-index: 999999;
+}
+
+.Smol-Popup {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #1c1c1c;
+    z-index: 1000001;
+    /* Ensure it's on top of everything */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.Very-Smol-Popup {
+    position: fixed;
+    top: 20%;
+    left: 5%;
+    right: 5%;
+    bottom: 20%;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #1c1c1c;
+    z-index: 1000001;
+    /* Ensure it's on top of everything */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.tipList {
+    font-size:14px;
+}
+
+.tipList li {
+    text-align: left;
+    text-decoration: none;
+    
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Semi-transparent background */
+    z-index: 1000000;
+    /* Overlay sits below the popup */
+    display: block;
+    pointer-events: all;
+    /* Block all interactions behind the overlay */
 }
 
 .Popup-container {

@@ -10,6 +10,8 @@ namespace ClaimIt.Models
         public string? Label { get; set; }
         public string? Description { get; set; }
         public string? Ticker { get; set; }
+        public string? Blockchain { get; set; }
+        public int? Level { get; set; }
         public string? CoinGeckoTicker { get; set; }
         public string? IconURL { get; set; }
         public string? WebsiteURL { get; set; }

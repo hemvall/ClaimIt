@@ -30,6 +30,48 @@ document.getElementById('addAirdropBtn').addEventListener('click', async functio
     loadAirdrops();
 });
 
+document.getElementById('tipbutton').addEventListener('click', async function () {
+    const container = document.querySelector("#tipPopup");
+
+    // Create a dark overlay
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+
+    container.innerHTML = `
+    <div class="Smol-Popup fade-in">
+        <button id="closePopup" class="closePopup">❌</button>
+        <div class="Popup-container">
+            <h1>🚀</h1>
+            <h1 style="background: linear-gradient(90deg, #FF7EB3, #FF758C, #FF5E62);-webkit-background-clip: text;-webkit-text-fill-color: transparent;font-weight: bold;">Claim Successful! </h1>
+            <a style="font-size:22px; font-weight: 600;">Congratulations! You've received 
+                <a style="background: linear-gradient(90deg, #FFD700, #FFB800, #FFA500);-webkit-background-clip: text;-webkit-text-fill-color: transparent;font-weight: bold; font-size:22px; font-weight: 600;">120 $TOKEN</a>.
+            </a>
+            <br>            <br>
+            <a style="font-size:14px; margin: 0 10px;">If ClaimIt helped you, a small donation goes a long way to keep us going! ❤️</a><br>
+            <br>
+            <div class="center">
+            <button id="actionButton" class="donateButton">Donate</button>
+            </div>
+            <ul class="tipList">
+                <li>🎖️    Unlock an exclusive badge to show your support!</li>
+                <li>💎    Gain VIP status and stand out in the ClaimIt community!</li>
+                <li>☯️    Earn some good karma—your future self will thank you. 😎</li>
+                <li>🚀    Boost your XP, and help us improve ClaimIt for everyone.</li>
+            </ul>
+        </div>
+    </div>
+    `;
+
+    // Close the popup when clicking on the close button
+    document.getElementById('closePopup').addEventListener('click', () => {
+        container.innerHTML = ''; // Clear the popup
+        document.body.removeChild(overlay); // Remove the overlay
+    });
+});
+
+
+
 document.getElementById('notificationIcon').addEventListener('click', async function () {
     // Fetch notifications from the API
     try {
@@ -42,7 +84,7 @@ document.getElementById('notificationIcon').addEventListener('click', async func
             <div class="Popup fade-in">
                 <button id="closePopup" class="closePopup">❌</button>
                 <div class="Popup-container">
-                    <h1>Notifications</h1>
+                    <h1>Notifications</h1><br>
                     <hr>
                     <div id="notificationsList"></div>
                 </div>
@@ -89,6 +131,9 @@ document.getElementById('notificationIcon').addEventListener('click', async func
     }
 });
 
+
+
+
 document.getElementById("showForm").addEventListener("click", function () {
     const form = document.getElementById("addAirdropForm");
     form.style.display = form.style.display === "none" ? "block" : "none";
@@ -119,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (taskContainer) {
                 taskContainer.classList.add("taskHidden");
                 taskContainer.style.backgroundColor = "#000";
-                taskContainer.style.color = "#00cd0a";
+                taskContainer.style.color = "#00ff0d";
             }
         }
     });

@@ -74,17 +74,25 @@ CREATE TABLE `Notifications`(
     `CreatedAt` DATETIME NOT NULL
 );
 
+ALTER TABLE Tasks ADD Level BIGINT DEFAULT 4;
+ALTER TABLE Users ADD XP BIGINT;
+ALTER TABLE Airdrops ADD Level BIGINT DEFAULT 4;
+ALTER TABLE Airdrops ADD Blockchain VARCHAR(255);
+
 INSERT INTO `airdrops`(`Label`, `Description`, `Ticker`, `CoinGeckoTicker`, `IconURL`, `WebsiteURL`, `XAccount`, `Status`, `Phase`, `StartDate`, `EndDate`, `Claimed`, `VerifiedByTeam`, `CreatedAt`, `UpdatedAt`) 
 VALUES ("NodePay", "Nodepay is a platform for AI training and development. Their mission is to provide an ecosystem for users to own and access AI with real time data intelligence.", "NC", "https://api.coingecko.com/api/v3/simple/price?ids=nodecoin&vs_currencies=usd", "https://play-lh.googleusercontent.com/x7F1sCseMpHlWuBYYh3vUaXvEASveBMCO6bejozZ7_FGQODAEKOYlcnNB-91xLXGrg=w240-h480-rw", "https://www.nodepay.com", "NodePay", "Live", "S4", '2024-10-26 14:30:00', '2025-04-26 14:30:00', 0, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO `airdrops`(`Label`, `Description`, `Ticker`, `CoinGeckoTicker`, `IconURL`, `WebsiteURL`, `XAccount`, `Status`, `Phase`, `StartDate`, `EndDate`, `Claimed`, `VerifiedByTeam`, `CreatedAt`, `UpdatedAt`) 
 VALUES ("Grass", "Grass is a network of millions of people who share their unused internet bandwidth to create a more equitable internet.", "GRASS", "https://api.coingecko.com/api/v3/simple/price?ids=grass&vs_currencies=usd", "https://pbs.twimg.com/profile_images/1836126251007852545/wILJU3d6_400x400.jpg", "https://www.getgrass.io", "@Grass_IO", "Live", "S5", '2024-10-26 14:30:00', '2025-04-26 14:30:00', 0, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO `suggestions`(`AirdropId`, `Potential`, `TutorialSource`, `FarmCost`, `TimeCost`, `CreatedAt`) VALUES (1, 800, "https://x.com/mr_cbillionaire/status/1879764929554579694", "0", 15, CURRENT_TIMESTAMP);
-INSERT INTO `users`(`Username`, `X`, `Discord`, `Email`, `CreatedAt`) VALUES ("Hemvall", "@Hemvall", "Hemvall#001", "gemvallofficial@gmail.com", CURRENT_TIMESTAMP);
+INSERT INTO `suggestions`(`AirdropId`, `Potential`, `TutorialSource`, `FarmCost`, `TimeCost`, `CreatedAt`) VALUES (1, 800, "https://x.com/mr_cbillionaire/status/1879764929554579694", "0", 15, CURRENT_TIMESTAMP, 0);
+INSERT INTO `users`(`Username`, `X`, `Discord`, `Email`, `CreatedAt`, `XP`) VALUES ("Hemvall", "@Hemvall", "Hemvall#001", "gemvallofficial@gmail.com", CURRENT_TIMESTAMP);
 INSERT INTO `wallets`(`UserId`, `Label`, `Address`, `Platform`, `CreatedAt`) VALUES (1, "20Mto0", "49ujxTPGCciW2vYcEUTpZBq62tW1JnfhWY6FbyDDCoxZ", "Phantom", CURRENT_TIMESTAMP);
 INSERT INTO `userairdrop`(`UserId`, `AirdropId`, `WalletId`, `Allocation`) VALUES (1, 1, 1, 105);
+INSERT INTO `tasks`(`AirdropId`, `Label`, `Type`, `URL`, `Deadline`, `CreatedAt`, `Level`) 
+VALUES (1, "Claim Daily bonus", "Daily", "https://www.nodepay.ai/", "2025-03-01 14:30:00", CURRENT_TIMESTAMP, 3);
+INSERT INTO `tasks`(`AirdropId`, `Label`, `Type`, `URL`, `Deadline`, `CreatedAt`, 2) 
+VALUES (2, "Create your Wallet", "Discover", "https://www.nodepay.ai/", "2025-03-01 14:30:00", CURRENT_TIMESTAMP, 2);
 INSERT INTO `tasks`(`AirdropId`, `Label`, `Type`, `URL`, `Deadline`, `CreatedAt`) 
-VALUES (1, "Claim Daily bonus", "Daily", "https://www.nodepay.ai/", "2025-03-01 14:30:00", CURRENT_TIMESTAMP);
-INSERT INTO `tasks`(`AirdropId`, `Label`, `Type`, `URL`, `Deadline`, `CreatedAt`) 
-VALUES (1, "Stake a minimum of 10 $NC", "Once", "https://www.nodefoundation.com", "2025-08-01 14:30:00", CURRENT_TIMESTAMP);
+VALUES (1, "Stake a minimum of 10 $NC", "Once", "https://www.nodefoundation.com", "2025-08-01 14:30:00", CURRENT_TIMESTAMP, 1);
 INSERT INTO `Notifications`(`AirdropId`, `Subject`, `Body`, `URL`, `ExpiresAt`, `CreatedAt`) 
 VALUES (1, "$NC Season 4 Claim is now Live!", "You can from now go tp https://www.nodefoundation.com and check if you are eligible for S4 rewards.", "https://www.nodefoundation.com", "2025-08-01 14:30:00", "2024-07-01 14:30:00");
+

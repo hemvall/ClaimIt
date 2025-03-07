@@ -10,6 +10,7 @@ namespace ClaimIt.Models
         public int AirdropId { get; set; }
         public string? Label { get; set; }
         public string? Type { get; set; }
+        public int? Level { get; set; }
         public string? URL { get; set; }
         public DateTime? Deadline { get; set; }
         public DateTime? CreatedAt { get; set; }
