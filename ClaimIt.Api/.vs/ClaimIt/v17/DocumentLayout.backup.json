@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "ClaimIt\\Models\\Airdrops.cs",
               "ToolTip": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Airdrops.cs",
               "RelativeToolTip": "ClaimIt\\Models\\Airdrops.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA+wAwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-07T10:46:28.159Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "ClaimIt\\Models\\Tasks.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T08:30:41.695Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T08:30:41.695Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "ClaimIt\\Models\\UserAirdrop.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAQwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T14:55:52.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T14:55:52.075Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "ClaimIt\\Controllers\\UsersAirdropController.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAkwB8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T14:41:59.498Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T14:41:59.498Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "ClaimIt\\Controllers\\AirdropsController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAQwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T14:32:34.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T14:32:34.937Z"
             }
           ]
         }

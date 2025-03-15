@@ -95,4 +95,6 @@ INSERT INTO `tasks`(`AirdropId`, `Label`, `Type`, `URL`, `Deadline`, `CreatedAt`
 VALUES (1, "Stake a minimum of 10 $NC", "Once", "https://www.nodefoundation.com", "2025-08-01 14:30:00", CURRENT_TIMESTAMP, 1);
 INSERT INTO `Notifications`(`AirdropId`, `Subject`, `Body`, `URL`, `ExpiresAt`, `CreatedAt`) 
 VALUES (1, "$NC Season 4 Claim is now Live!", "You can from now go tp https://www.nodefoundation.com and check if you are eligible for S4 rewards.", "https://www.nodefoundation.com", "2025-08-01 14:30:00", "2024-07-01 14:30:00");
+INSERT INTO `airdrops`(`Label`, `Description`, `Ticker`, `CoinGeckoTicker`, `IconURL`, `WebsiteURL`, `XAccount`, `Status`, `Phase`, `StartDate`, `EndDate`, `Claimed`, `VerifiedByTeam`, `CreatedAt`, `UpdatedAt`, `Level`, `Blockchain`)
+VALUES ('RainMakr','The World’s Fastest AI Launchpad on @MegaETH_Labs. 100% fees to buy back $RAIN.','RAIN','','https://pbs.twimg.com/profile_images/1819638283133243394/vQq0fW9F_400x400.jpg', '', 'https://x.com/RainMakr_xyz','RainMakr_xyz','Farming','2025-08-01 14:30:00','2025-09-01 14:30:00', false, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 3,'X');
 
