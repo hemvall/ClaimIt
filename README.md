@@ -20,6 +20,8 @@ Stop spending time hunting for airdrop opportunities and tracking details across
 
 ## Demo 
 **Web Extension**
+
+
 ![image](https://github.com/user-attachments/assets/776bd5ec-b920-49ef-8088-edbaa9242af9)
 ![image](https://github.com/user-attachments/assets/f8a2c0e2-7bba-41d3-b187-341b192f9356)
 ![image](https://github.com/user-attachments/assets/adbe1ccc-3b6e-4370-85d8-5f09da9464a3)
@@ -27,6 +29,8 @@ Stop spending time hunting for airdrop opportunities and tracking details across
 ![image](https://github.com/user-attachments/assets/2b4ba6eb-9478-4948-bab3-d99cea327aa6)
 
 **Landing Page**
+
+
 ![image](https://github.com/user-attachments/assets/9faa7582-8a72-410f-bb0c-facbce75ec72)
 ![image](https://github.com/user-attachments/assets/ad2c8980-39d0-4137-a83d-3dd48f01135a)
 
