@@ -5,7 +5,7 @@
 Stop spending time hunting for airdrop opportunities and tracking details across multiple sources—ClaimIt handles it all for you!
 
 ## 🛠 Features
-- 📊 **Airdrop Dashboard** – View past, active, and upcoming airdrops
+- 📊 Smart Airdrop Dashboard – Stop guessing. Know exactly what you missed, what’s live, and what’s coming — per wallet.
 - 🎯 **Live Quests** - Engaging missions designed to enhance participation and optimize your farming.
 - 🔔 **Real-time Alerts** – Get notified when you qualify for an airdrop
 - 🌱 **Suggested Projects** - Offers a list of projects you might be interested in farming.
