@@ -6,12 +6,13 @@ import { ChevronLeft, ExternalLink, Copy, Check } from "lucide-react"
 
 // Tutorial data
 const tutorialsData = {
-  optimum: {
-    name: "@get_optimum",
-    badge: "OG ROLE",
+  rainmakr: {
+    name: "RainMakr",
+    badge: "Testnet",
     badgeColor: "purple",
     raised: "$11M raised",
-    title: "Do this now",
+    title: "Make it rain! ⛈️",
+    image: "https://pbs.twimg.com/profile_images/1819638283133243394/vQq0fW9F_400x400.jpg",
     content: [
       {
         type: "text",
@@ -45,12 +46,13 @@ const tutorialsData = {
     ],
     backers: ["Robot Ventures", "1k(x)", "GSR", "Maven 11"],
   },
-  gte: {
-    name: "@GTE_XYZ",
-    badge: "Trading",
+  nodepay: {
+    name: "NodePay",
+    badge: "Season 4",
     badgeColor: "blue",
     raised: "$11M raised",
     title: "Decentralized trading platform",
+    image: "https://play-lh.googleusercontent.com/x7F1sCseMpHlWuBYYh3vUaXvEASveBMCO6bejozZ7_FGQODAEKOYlcnNB-91xLXGrg=w240-h480-rw",
     content: [
       {
         type: "text",
@@ -151,11 +153,12 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
 
           <div className="flex items-center gap-3 mb-2">
             <div className="h-8 w-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
-            <h1 className="text-2xl font-bold">Claimit</h1>
+            <h1 className="text-3xl font-bold">Claimit</h1>
           </div>
 
           <div className="flex items-center justify-between mb-2">
-            <h2 className="text-3xl font-bold flex items-center gap-2">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <img className="h-10 w-10 rounded-full" src={tutorial.image} />
               {tutorial.name}
               <span className={`px-2 py-0.5 text-xs rounded-full border ${getBadgeStyles(tutorial.badgeColor)}`}>
                 {tutorial.badge}
@@ -164,7 +167,7 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
             <span className="text-sm text-green-400">{tutorial.raised}</span>
           </div>
 
-          <h3 className="text-2xl font-medium text-pink-400 mb-6">{tutorial.title}</h3>
+          <h3 className="text-xl font-semibold text-pink-400 mb-6 ml-12">{tutorial.title}</h3>
         </header>
 
         <main className="space-y-3 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6">
