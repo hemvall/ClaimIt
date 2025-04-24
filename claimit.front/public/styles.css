@@ -111,6 +111,24 @@ button {
     align-items: center;
 }
 
+.niceButton {
+    width: 100%;
+    background: #4F46E5;
+    color: white;
+    text-decoration: none;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.niceButton:hover {
+    background: #625be6;
+    color: white;
+}
+
 .donateButton {
     background: linear-gradient(90deg, #FF7EB3, #FF758C, #FF5E62);
     border-color: #FF758C !important;
@@ -145,13 +163,15 @@ button {
     transition: .4s ease-in-out;
     z-index: 9999999999;
 }
-#claimButton:hover{
+
+#claimButton:hover {
     background-color: #a1a1a1;
     color: white;
 }
 
 #actionButton,
-#copyButton, #saveAllocation {
+#copyButton,
+#saveAllocation {
     background-color: #57b3fe;
     border: 1px solid #57b3fe;
     color: #1c1c1c;
@@ -179,7 +199,8 @@ button {
 }
 
 #actionButton:hover,
-#copyButton:hover, #saveAllocation:hover {
+#copyButton:hover,
+#saveAllocation:hover {
     background-color: transparent;
     color: #57b3fe;
     border: 1px solid #57b3fe;
@@ -643,9 +664,9 @@ h3 {
     padding: 25px;
     background: rgb(28, 28, 28, 0.8);
     /* semi-transparent background */
-    border: 3px solid #57b3fe;
+    border: .5px solid #393939;
     border-radius: 10px;
-    box-shadow: 0 0 15px #57b3fe;
+    box-shadow: 0 0 5px #393939;
     text-align: left;
 }
 
@@ -684,8 +705,8 @@ h3 {
 .task-header {
     font-size: 20px;
     font-weight: 700;
-    color: #00ffff;
-    text-shadow: 0 0 5px #57b3fe;
+    color: #f8f8f8;
+    text-shadow: 0 0 2px #686868;
     margin-bottom: 10px;
 }
 
@@ -699,9 +720,9 @@ h3 {
 }
 
 .task-subheader {
-    color: #fff;
-    font-size: 13px;
-    text-align: center;
+    color: #5e5e5e;
+    font-size: 16px;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .task {
@@ -712,7 +733,7 @@ h3 {
     color: #fff;
     margin: 5px 0;
     border-radius: 5px;
-    border: 1px solid #57b3fe;
+    border: 1px solid #393939;
 }
 
 .taskXp {
@@ -902,13 +923,13 @@ h3 {
 }
 
 .tipList {
-    font-size:14px;
+    font-size: 14px;
 }
 
 .tipList li {
     text-align: left;
     text-decoration: none;
-    
+
 }
 
 .overlay {

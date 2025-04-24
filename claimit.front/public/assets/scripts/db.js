@@ -148,6 +148,7 @@ async function loadTasks() {
 
             let countdownHTML = "";
             if (task.deadline) {
+                startCountdowns();
                 countdownHTML = `<span class="countdown" data-deadline="${task.deadline}"></span>`;
             }
 
@@ -182,17 +183,37 @@ async function loadTasks() {
               `;
             } else {
                 taskdiv.innerHTML = `
-                  <input id="taskComplete" type="checkbox">
-                  <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
-                  <span class="taskDescription">[${task.type}] ${task.label}<br>
-                      <a style="font-size: 12px;" class="tutorialLink" href="${task.url}" target="_blank">Complete it now</a>
-                      <a class="taskXp">+${taskxp}XP</a>
-                  </span>
+                  <div style="width: 300px; padding: 16px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); font-family: 'Space Grotesk', sans-serif; color: white;">
+                        <div style="display: flex; align-items: center;">
+                            <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
+                            <h3 style="margin: 0; margin-left: 10px; font-size: 14px; font-family: 'Orbitron', sans-serif;">${task.label}</h3>
+                        </div>
+                        <span style="display:none; color: #d33; font-size: 12px; padding: 4px 8px; margin-top: 15px; border-radius: 8px;">${task.level}</span>
+                        <div style="display: flex; align-items: center; margin-top: 15px; font-size: 14px; color: #666;">
+                            <span>⏳ ${countdownHTML}</span>
+                            <span style="margin-left: auto; color: white;">⚡ ${taskxp}XP</span>
+                        </div>
+                        <a href="${task.url}" target="_blank" style="color: white; text-decoration: none;">
+                            <button id="StartQuest" class="niceButton">
+                                Start Quest →
+                            </button>
+                        </a>
+                    </div>
               `;
             }
 
             taskList.appendChild(taskdiv);
         }
+        document.getElementById("StartQuest").addEventListener("click", function () {
+        
+            // Remplace le bouton par "Complete Task"
+            const container = button.parentElement;
+            container.innerHTML = `
+                <button style="width: 100%; background:#10B981; color: white; border: none; padding: 10px; font-size: 14px; border-radius: 8px; cursor: pointer;">
+                    ✅ Complete Task
+                </button>
+            `;        
+        });
 
         const buttonWrapper = document.createElement("div");
         buttonWrapper.style.display = "flex";
@@ -201,7 +222,7 @@ async function loadTasks() {
 
         const openAllTasksButton = document.createElement("button");
         openAllTasksButton.textContent = "Open All Tasks";
-        openAllTasksButton.id = "openAllTasks";
+        openAllTasksButton.id = "niceButton";
 
         openAllTasksButton.addEventListener("click", () => {
             tasks.forEach(task => {
@@ -280,22 +301,23 @@ async function loadSuggestions() {
 
             const actionButton = document.createElement("button");
             actionButton.textContent = "Join project";
-            actionButton.classList.add("minimalistButton");
+            actionButton.classList.add("niceButton");
+            actionButton.style.marginLeft = "15px";
             actionButton.onclick = () => window.open(airdrop.websiteURL, "_blank"); // Open airdrop website
 
             airdropContainer.appendChild(iconElement);
             airdropContainer.appendChild(airdropName);
             airdropContainer.appendChild(actionButton);
 
-            const potential = document.createElement("p");
+            const potential = document.createElement("a");
             potential.textContent = `Potential: $${suggestion.potential}`;
             potential.classList.add("potential");
 
-            const timeCost = document.createElement("p");
+            const timeCost = document.createElement("a");
             timeCost.textContent = `Time Cost: ${suggestion.timeCost} minutes`;
             timeCost.classList.add("costInfo");
 
-            const farmCost = document.createElement("p");
+            const farmCost = document.createElement("a");
             farmCost.textContent = `Farm Cost: $${suggestion.farmCost}`;
             farmCost.classList.add("costInfo");
 
@@ -347,7 +369,16 @@ async function loadAirdrops() {
         const airdrop = await resp.json();
         console.log(airdrop);
         const coinPrice = await fetchCoinPrice(airdrop.coinGeckoTicker) || 0;
-        const amountValue = 127 * coinPrice;
+        let deadlineValue = `
+            <a style="display:flex;align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock mr-1">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            5d 11h
+            </a>
+            `;
+        let amountValue = 127 * coinPrice;
 
         totalAmount += parseFloat(amountValue) || 0;
 
@@ -382,7 +413,6 @@ async function loadAirdrops() {
         claim.textContent = "Claim >";
         const amount = document.createElement("a");
         amount.className = "coinAmount";
-        amount.textContent = "$" + amountValue.toFixed(2);
 
         if (uAirdrop.allocation == 0) {
             claim.classList.remove("hide");
@@ -395,13 +425,17 @@ async function loadAirdrops() {
             claimedText.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check mr-1"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>Claimed
             `;
-            }
+            deadlineValue = '';
+            amountValue = `
+            $${amountValue.toFixed(2)}`;
+        }
         else {
             claimedText.classList.add("notClaimed");
             claimedText.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock mr-1"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>In Progress
             `;
-            }
+            amountValue = '';
+        }
 
 
         infoDiv.appendChild(label);
@@ -409,17 +443,14 @@ async function loadAirdrops() {
         if (uAirdrop.allocation > 0) {
             claim.classList.add("hide");
         }
-        
+
         infoDiv2.innerHTML = `
             <a>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock mr-1">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                5d 11h $${amountValue.toFixed(2)}
+                ${deadlineValue}
+                ${amountValue}
             </a>
         `;
-        
+
         infoDiv.appendChild(claimedText);
         infoCont.appendChild(infoDiv);
         infoCont.appendChild(infoDiv2);
