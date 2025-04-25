@@ -128,6 +128,22 @@ async function loadTasks() {
         const tasks = await response.json();
         const taskList = document.getElementById("tasks");
 
+        const buttonWrapper = document.createElement("div");
+        buttonWrapper.style.display = "flex";
+        buttonWrapper.style.justifyContent = "center";
+        buttonWrapper.style.marginTop = "10px";
+
+        const openAllTasksButton = document.createElement("button");
+        openAllTasksButton.textContent = "Open All Tasks";
+        openAllTasksButton.className = "niceButton";
+
+        openAllTasksButton.addEventListener("click", () => {
+            tasks.forEach(task => {
+                window.open(task.url, '_blank');
+            });
+        });
+        buttonWrapper.appendChild(openAllTasksButton);
+        taskList.appendChild(buttonWrapper);
         // Loop through tasks and create their elements
         for (const task of tasks) {
             let airdropLabel = "";
@@ -171,17 +187,6 @@ async function loadTasks() {
                     taskxp = 5;
             }
 
-            if (task.type === "Once") {
-                taskdiv.innerHTML = `
-                  <input id="taskComplete" type="checkbox">
-                  <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
-                  <span class="taskDescription">${task.label}<br>
-                  <a style="font-size: 12px;" class="tutorialLink" href="${task.url}" target="_blank">Complete it now</a>
-                  <a class="taskXp">+${taskxp}XP</a>
-                  </span>
-                  ${countdownHTML}
-              `;
-            } else {
                 taskdiv.innerHTML = `
                   <div style="width: 300px; padding: 16px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); font-family: 'Space Grotesk', sans-serif; color: white;">
                         <div style="display: flex; align-items: center;">
@@ -189,7 +194,7 @@ async function loadTasks() {
                             <h3 style="margin: 0; margin-left: 10px; font-size: 14px; font-family: 'Orbitron', sans-serif;">${task.label}</h3>
                         </div>
                         <span style="display:none; color: #d33; font-size: 12px; padding: 4px 8px; margin-top: 15px; border-radius: 8px;">${task.level}</span>
-                        <div style="display: flex; align-items: center; margin-top: 15px; font-size: 14px; color: #666;">
+                        <div style="display: flex; align-items: center; margin: 5px; font-size: 14px; font-weight: 600; color: #666;">
                             <span>⏳ ${countdownHTML}</span>
                             <span style="margin-left: auto; color: white;">⚡ ${taskxp}XP</span>
                         </div>
@@ -200,37 +205,19 @@ async function loadTasks() {
                         </a>
                     </div>
               `;
-            }
 
             taskList.appendChild(taskdiv);
         }
         document.getElementById("StartQuest").addEventListener("click", function () {
-        
+
             // Remplace le bouton par "Complete Task"
             const container = button.parentElement;
             container.innerHTML = `
                 <button style="width: 100%; background:#10B981; color: white; border: none; padding: 10px; font-size: 14px; border-radius: 8px; cursor: pointer;">
                     ✅ Complete Task
                 </button>
-            `;        
+            `;
         });
-
-        const buttonWrapper = document.createElement("div");
-        buttonWrapper.style.display = "flex";
-        buttonWrapper.style.justifyContent = "center";
-        buttonWrapper.style.marginTop = "10px";
-
-        const openAllTasksButton = document.createElement("button");
-        openAllTasksButton.textContent = "Open All Tasks";
-        openAllTasksButton.id = "niceButton";
-
-        openAllTasksButton.addEventListener("click", () => {
-            tasks.forEach(task => {
-                window.open(task.url, '_blank');
-            });
-        });
-        buttonWrapper.appendChild(openAllTasksButton);
-        taskList.appendChild(buttonWrapper);
 
         // startCountdowns();
     } catch (error) {
@@ -278,6 +265,9 @@ async function loadSuggestions() {
         container.innerHTML = "";  // Clear previous content
 
         for (const suggestion of suggestions) {
+            const url = `https://localhost:7000/UserAirdrop/User/1/Airdrop/${suggestion.airdropId}`
+            const response = await fetch(url);
+
             let airdropURL = `https://localhost:7000/Airdrops/${suggestion.airdropId}`;
             const airdropResponse = await fetch(airdropURL);
             const airdrop = await airdropResponse.json();
@@ -299,42 +289,38 @@ async function loadSuggestions() {
             iconElement.width = 40;
             iconElement.classList.add("airdropIcon");
 
-            const actionButton = document.createElement("button");
-            actionButton.textContent = "Join project";
-            actionButton.classList.add("niceButton");
-            actionButton.style.marginLeft = "15px";
-            actionButton.onclick = () => window.open(airdrop.websiteURL, "_blank"); // Open airdrop website
+            // Check if the status code is not 200, so that we can suggest it
+            if (response.status == 404) {
+                const actionButton = document.createElement("button");
+                actionButton.textContent = "Join project";
+                actionButton.classList.add("niceButton");
+
+                actionButton.style.marginLeft = "15px";
+                actionButton.onclick = () => addUserAirdrop(suggestion.airdropId);
+                airdropContainer.appendChild(actionButton);
+            }
 
             airdropContainer.appendChild(iconElement);
             airdropContainer.appendChild(airdropName);
-            airdropContainer.appendChild(actionButton);
 
-            const potential = document.createElement("a");
-            potential.textContent = `Potential: $${suggestion.potential}`;
-            potential.classList.add("potential");
-
-            const timeCost = document.createElement("a");
-            timeCost.textContent = `Time Cost: ${suggestion.timeCost} minutes`;
-            timeCost.classList.add("costInfo");
-
-            const farmCost = document.createElement("a");
-            farmCost.textContent = `Farm Cost: $${suggestion.farmCost}`;
-            farmCost.classList.add("costInfo");
-
-            const tutorialLink = document.createElement("a");
-            tutorialLink.href = suggestion.tutorialSource;
-            tutorialLink.textContent = "View Tutorial";
-            tutorialLink.classList.add("tutorialLink");
-            tutorialLink.setAttribute("target", "_blank");
+            const content = document.createElement("div");
+            content.style.textAlign = "left";
+            content.innerHTML = `
+            <a class="task-subheader">${airdrop.description}</a><br><br>
+            <a class="potential">$${suggestion.potential}</a><br>
+            <a class="subtext">Potential Value</a>
+            <div class="costInfo" style="display: flex; gap: 70px">
+                <a>⌛ ${suggestion.timeCost} minutes</a>
+                <a>💰 $${suggestion.farmCost}</a>
+            </div>
+            <a class="niceButton" style="display:block; text-align: center; width: 80%; color: black; background: white" target="_blank" href="${suggestion.tutorialSource}">View Tutorial</a>
+            `;
 
             if (airdropResponse.ok) {
                 suggestionDiv.appendChild(airdropContainer);
             }
 
-            suggestionDiv.appendChild(potential);
-            suggestionDiv.appendChild(timeCost);
-            suggestionDiv.appendChild(farmCost);
-            suggestionDiv.appendChild(tutorialLink);
+            suggestionDiv.appendChild(content);
 
             container.appendChild(suggestionDiv);
         }
@@ -343,6 +329,21 @@ async function loadSuggestions() {
     } catch (error) {
         console.error("Error loading suggestions:", error);
     }
+}
+
+async function addUserAirdrop(aId) {
+    fetch('https://localhost:7000/UserAirdrop', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: 1, airdropId: aId, walletId: 1, allocation: 0 })
+    }).then(res => res.json()).then(console.log);
+    const notification = document.getElementById('addUserAirdropNotif');
+    notification.style.display = 'block';
+    // Hide the notification after 2 seconds
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 2500);
+
 }
 
 async function loadAirdrops() {
@@ -414,7 +415,7 @@ async function loadAirdrops() {
         const amount = document.createElement("a");
         amount.className = "coinAmount";
 
-        if (uAirdrop.allocation == 0) {
+        if (uAirdrop.allocation == 0 && 1==1) { // add if CAN claim . 
             claim.classList.remove("hide");
         }
 

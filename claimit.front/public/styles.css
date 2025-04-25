@@ -352,8 +352,8 @@ button.projectRow {
 }
 
 .suggestionRow:hover {
-    background-color: #404040;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    background-color: #222222 !important;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.05);
 }
 
 .suggestionTitle {
@@ -370,7 +370,8 @@ button.projectRow {
 
 .potential {
     font-size: 1.2rem;
-    color: #38de38;
+    color: #22C55E;
+    font-family: 'Orbitron', sans-serif;
     /* Green color */
     font-weight: 600;
 }
@@ -745,18 +746,11 @@ h3 {
 }
 
 .task-container button {
-    background: transparent;
-    color: #57b3fe;
-    border: 1px solid #57b3fe;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
     transition: 0.3s;
 }
 
 .task-container button:hover {
-    background: #57b3fe;
-    color: #000;
+
 }
 
 .task-container .progress-bar {

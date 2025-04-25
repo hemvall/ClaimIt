@@ -2,7 +2,9 @@
 import React from 'react';
 import { useState } from "react"
 import Link from "next/link"
-import { ChevronLeft, ExternalLink, Copy, Check } from "lucide-react"
+import { ChevronLeft, ExternalLink, Copy, Check, Star, CheckCircle, Share2, Clock } from "lucide-react"
+import { ProgressBar } from "@/components/progress-bar"
+
 
 // Tutorial data
 const tutorialsData = {
@@ -12,6 +14,7 @@ const tutorialsData = {
     badgeColor: "purple",
     raised: "$11M raised",
     title: "Make it rain! ⛈️",
+    estimatedTime: "15 min",
     image: "https://pbs.twimg.com/profile_images/1819638283133243394/vQq0fW9F_400x400.jpg",
     content: [
       {
@@ -52,6 +55,7 @@ const tutorialsData = {
     badgeColor: "blue",
     raised: "$11M raised",
     title: "Decentralized trading platform",
+    estimatedTime: "15 min",
     image: "https://play-lh.googleusercontent.com/x7F1sCseMpHlWuBYYh3vUaXvEASveBMCO6bejozZ7_FGQODAEKOYlcnNB-91xLXGrg=w240-h480-rw",
     content: [
       {
@@ -129,6 +133,19 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
     setTimeout(() => setCopiedText(null), 2000)
   }
 
+  const [copied, setCopied] = useState(false);
+  const textToCopy = window.location.href;
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Copy failed:", err);
+    }
+  };
+
   const getBadgeStyles = (color: string) => {
     switch (color) {
       case "purple":
@@ -146,15 +163,16 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white font-sans">
       <div className="max-w-4xl mx-auto p-6">
         <header className="mb-10">
+
+          <div className="flex items-center gap-0.5 mb-2">
+            <img className="h-14 w-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/9011/9011549.png" />
+            <h1 className="text-3xl font-bold">Claimit</h1>
+          </div>
+
           <Link href="/" className="text-blue-400 hover:underline flex items-center gap-2 mb-6">
             <ChevronLeft className="h-4 w-4" />
             Back to tutorials
           </Link>
-
-          <div className="flex items-center gap-3 mb-2">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
-            <h1 className="text-3xl font-bold">Claimit</h1>
-          </div>
 
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-2xl font-bold flex items-center gap-2">
@@ -167,7 +185,49 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
             <span className="text-sm text-green-400">{tutorial.raised}</span>
           </div>
 
-          <h3 className="text-xl font-semibold text-pink-400 mb-6 ml-12">{tutorial.title}</h3>
+          <div className="flex items-center justify-between mb-2.5">
+            <h3 className="text-2xl font-medium text-pink-400">{tutorial.title}</h3>
+            <div className="flex items-center gap-3">
+              <button
+                // onClick={handleFavorite}
+                className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
+                aria-label="Remove from favorites"
+              >
+                <Star
+                  className="h-4 w-4"
+                  fill="#FBBF24"
+                  color="#FBBF24"
+                />
+                <span className="text-sm">Favorited</span>
+              </button>
+
+              <div className="p-0">
+                <div className="relative inline-block">
+                  <button
+                    onClick={handleCopy}
+                    className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
+                    aria-label="Share tutorial">
+                    <Share2 className="h-4 w-4" />
+                    <span className="text-sm">Share</span>
+                  </button>
+
+                  {copied && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-blue-600 text-white text-sm rounded shadow">
+                      Copied!
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-between mb-2.5">
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <Clock className="h-4 w-4" />
+              <span>Estimated time: {tutorial.estimatedTime}</span>
+            </div>
+            <span className="text-sm font-medium">32% complete</span>
+          </div>
+          <ProgressBar progress={32} />
         </header>
 
         <main className="space-y-3 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6">

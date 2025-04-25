@@ -30,9 +30,9 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white font-sans">
       <div className="max-w-4xl mx-auto p-6">
         <header className="mb-10">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
-            <h1 className="text-2xl font-bold">Claimit</h1>
+          <div className="flex items-center gap-0.5 mb-2">
+            <img className="h-14 w-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/9011/9011549.png"/>
+            <h1 className="text-3xl font-bold">Claimit</h1>
           </div>
           <h2 className="text-4xl font-extrabold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
             Airdrop Tutorials
