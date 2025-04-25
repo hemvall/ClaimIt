@@ -187,7 +187,7 @@ async function loadTasks() {
                     taskxp = 5;
             }
 
-                taskdiv.innerHTML = `
+            taskdiv.innerHTML = `
                   <div style="width: 300px; padding: 16px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); font-family: 'Space Grotesk', sans-serif; color: white;">
                         <div style="display: flex; align-items: center;">
                             <img height="30px" width="30px" style="border-radius: 50%; margin-right: 2px;" src="${airdropImage}" />
@@ -263,7 +263,8 @@ async function loadSuggestions() {
         const suggestions = await response.json();
         const container = document.querySelector("#content3");
         container.innerHTML = "";  // Clear previous content
-
+        const suggestionHeader = document.createElement("h3");
+        suggestionHeader.textContent = "Recommended Projects to Join and Start Earning";
         for (const suggestion of suggestions) {
             const url = `https://localhost:7000/UserAirdrop/User/1/Airdrop/${suggestion.airdropId}`
             const response = await fetch(url);
@@ -289,6 +290,9 @@ async function loadSuggestions() {
             iconElement.width = 40;
             iconElement.classList.add("airdropIcon");
 
+            airdropContainer.appendChild(iconElement);
+            airdropContainer.appendChild(airdropName);
+
             // Check if the status code is not 200, so that we can suggest it
             if (response.status == 404) {
                 const actionButton = document.createElement("button");
@@ -300,20 +304,21 @@ async function loadSuggestions() {
                 airdropContainer.appendChild(actionButton);
             }
 
-            airdropContainer.appendChild(iconElement);
-            airdropContainer.appendChild(airdropName);
+
 
             const content = document.createElement("div");
             content.style.textAlign = "left";
             content.innerHTML = `
             <a class="task-subheader">${airdrop.description}</a><br><br>
-            <a class="potential">$${suggestion.potential}</a><br>
-            <a class="subtext">Potential Value</a>
-            <div class="costInfo" style="display: flex; gap: 70px">
-                <a>⌛ ${suggestion.timeCost} minutes</a>
-                <a>💰 $${suggestion.farmCost}</a>
+            <a class="potential task-goals">$${suggestion.potential}</a><br>
+            <a class="subtext">Potential Value</a><br>
+            <div class="costInfo" style="display: flex; gap: 10px; margin: 12px 0; ">
+                <a class="highlightBox farm" >
+                    ${suggestion.farmCost > 0 ? `💰 $${suggestion.farmCost}` : "💰 Free"}
+                </a>
+                <a class="highlightBox time">⌛ ${suggestion.timeCost} minutes</a>
             </div>
-            <a class="niceButton" style="display:block; text-align: center; width: 80%; color: black; background: white" target="_blank" href="${suggestion.tutorialSource}">View Tutorial</a>
+            <a class="niceButton viewTuto" style="display:block; font-width: 700; font-size: 16px; text-align: center; width: 80%; color: black; background: white" target="_blank" href="${suggestion.tutorialSource}">👉View Tutorial</a>
             `;
 
             if (airdropResponse.ok) {
@@ -415,7 +420,7 @@ async function loadAirdrops() {
         const amount = document.createElement("a");
         amount.className = "coinAmount";
 
-        if (uAirdrop.allocation == 0 && 1==1) { // add if CAN claim . 
+        if (uAirdrop.allocation == 0 && 1 == 1) { // add if CAN claim . 
             claim.classList.remove("hide");
         }
 

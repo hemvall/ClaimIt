@@ -215,6 +215,21 @@ button {
     width: 100%;
 }
 
+.highlightBox {
+    font-size: 14px;
+    padding: 3px 7px;
+    color: white;
+    border-radius: 50px;
+}
+
+.highlightBox.farm {
+    background-color: darkolivegreen;
+}
+
+.highlightBox.time {
+    background-color: darkslateblue;
+}
+
 button.projectRow {
     padding: 12px 20px;
     border-radius: 12px;
@@ -343,7 +358,7 @@ button.projectRow {
     flex-direction: column;
     align-items: flex-start;
     padding: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     background-color: #222222;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -370,10 +385,18 @@ button.projectRow {
 
 .potential {
     font-size: 1.2rem;
-    color: #22C55E;
+    /* color: #22C55E; */
     font-family: 'Orbitron', sans-serif;
     /* Green color */
     font-weight: 600;
+}
+
+.viewTuto {
+    transform: .3s ease-in-out;
+    background: #fff;
+}
+.viewTuto:hover {
+    background-color: #c1c1c1;
 }
 
 .costInfo {
@@ -706,22 +729,16 @@ h3 {
 .task-header {
     font-size: 20px;
     font-weight: 700;
-    color: #f8f8f8;
-    text-shadow: 0 0 2px #686868;
     margin-bottom: 10px;
 }
 
 .task-goals {
-    font-size: 17px;
-    font-weight: 700;
     color: #00ff0d;
     text-shadow: 0 0 5px #57fe57;
-    text-align: center;
-    margin-top: 15px;
 }
 
 .task-subheader {
-    color: #5e5e5e;
+    color: #e0e0e0;
     font-size: 16px;
     font-family: 'Space Grotesk', sans-serif;
 }
@@ -732,7 +749,7 @@ h3 {
     padding: 10px;
     background: rgba(0, 255, 255, 0.1);
     color: #fff;
-    margin: 5px 0;
+    margin: 20px 0;
     border-radius: 5px;
     border: 1px solid #393939;
 }
