@@ -2,9 +2,8 @@
 import React from 'react';
 import { useState } from "react"
 import Link from "next/link"
-import { ChevronLeft, ExternalLink, Copy, Check, Star, CheckCircle, Share2, Clock } from "lucide-react"
+import { ChevronLeft, ExternalLink, Copy, Check, Star, Share2, Clock } from "lucide-react"
 import { ProgressBar } from "@/components/progress-bar"
-import { time } from 'console';
 
 
 // Tutorial data
