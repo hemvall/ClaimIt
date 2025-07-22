@@ -4,6 +4,11 @@ import { useState } from "react"
 import Link from "next/link"
 import { ChevronLeft, ExternalLink, Copy, Check, Star, Share2, Clock } from "lucide-react"
 import { ProgressBar } from "@/components/progress-bar"
+import { Metadata } from "next"
+export const metadata: Metadata = {
+  title: "Claimit - Airdrop Tutorial",
+  description: "Complete step-by-step guides to claim your tokens from the hottest crypto projects",
+}
 
 
 // Tutorial data
@@ -224,9 +229,14 @@ const tutorialsData = {
     ],
   },
 }
-
-export default function TutorialPage({ params }: { params: { slug: string } }) {
+type Props = {
+  params: {
+    slug: string
+  }
+}
+export default function TutorialPage({ params }: Props) {
   const { slug } = params;
+  
   const tutorial = tutorialsData[slug as keyof typeof tutorialsData]
   const [copiedText, setCopiedText] = useState<string | null>(null)
   const [copied, setCopied] = useState(false);
