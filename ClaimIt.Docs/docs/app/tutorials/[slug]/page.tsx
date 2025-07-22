@@ -230,7 +230,7 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
   const tutorial = tutorialsData[slug as keyof typeof tutorialsData]
   const [copiedText, setCopiedText] = useState<string | null>(null)
   const [copied, setCopied] = useState(false);
-  const textToCopy = window.location.href;
+
   if (!tutorial) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white font-sans flex items-center justify-center">
@@ -251,6 +251,7 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
     setTimeout(() => setCopiedText(null), 2000)
   }
 
+  const textToCopy = window.location.href;
 
   const handleCopy = async () => {
     try {
