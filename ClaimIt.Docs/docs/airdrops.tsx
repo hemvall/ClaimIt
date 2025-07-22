@@ -4,26 +4,26 @@ import { ChevronRight } from "lucide-react"
 export default function Home() {
   const tutorials = [
     {
+      id: "Kaisar",
+      name: "Kaisar Network",
+      badge: "AI Compute Layer",
+      badgeColor: "blue",
+      raised: "$11M raised",
+    },
+    {
       id: "rainmakr",
       name: "RainMakr",
       badge: "Testnet V1",
       badgeColor: "purple",
       raised: "$11M raised",
     },
-    {
-      id: "nodepay",
-      name: "NodePay",
-      badge: "Season 4",
-      badgeColor: "blue",
-      raised: "$88M raised",
-    },
-    {
-      id: "galxe",
-      name: "@Galxe_Official",
-      badge: "Credentials",
-      badgeColor: "green",
-      raised: "$8M raised",
-    },
+    // {
+    //   id: "nodepay",
+    //   name: "NodePay",
+    //   badge: "Season 4",
+    //   badgeColor: "green",
+    //   raised: "$88M raised",
+    // }
   ]
 
   return (

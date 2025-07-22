@@ -134,7 +134,7 @@ async function loadTasks() {
         buttonWrapper.style.marginTop = "10px";
 
         const openAllTasksButton = document.createElement("button");
-        openAllTasksButton.textContent = "Open All Tasks";
+        openAllTasksButton.innerHTML = `<svg width="15px" height="20px" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg> <strong> Open All Suggested Tasks</strong>`;
         openAllTasksButton.className = "niceButton";
 
         openAllTasksButton.addEventListener("click", () => {
@@ -309,9 +309,9 @@ async function loadSuggestions() {
             const content = document.createElement("div");
             content.style.textAlign = "left";
             content.innerHTML = `
-            <a class="task-subheader">${airdrop.description}</a><br><br>
+            <a class="task-subheader" style="margin-top: 10px;">${airdrop.description}</a><br><br>
             <a class="potential task-goals">$${suggestion.potential}</a><br>
-            <a class="subtext">Potential Value</a><br>
+            <a class="subtext">Potential Value</a><br><br>
             <div class="costInfo" style="display: flex; gap: 10px; margin: 12px 0; ">
                 <a class="highlightBox farm" >
                     ${suggestion.farmCost > 0 ? `💰 $${suggestion.farmCost}` : "💰 Free"}
@@ -414,8 +414,11 @@ async function loadAirdrops() {
         label.className = "coinLabel";
         label.textContent = airdrop.label;
         const claim = document.createElement("button");
-        claim.className = "claimbutton";
-        claim.id = "claimButton"
+        claim.className = "niceButton";
+        claim.style.height = "30px";
+        claim.style.width = "95px";
+        claim.style.marginLeft = "15px";
+        claim.style.fontWeight = "bold";
         claim.textContent = "Claim >";
         const amount = document.createElement("a");
         amount.className = "coinAmount";
@@ -456,8 +459,9 @@ async function loadAirdrops() {
                 ${amountValue}
             </a>
         `;
+        infoDiv2.appendChild(claimedText);
 
-        infoDiv.appendChild(claimedText);
+
         infoCont.appendChild(infoDiv);
         infoCont.appendChild(infoDiv2);
         button.appendChild(infoCont);

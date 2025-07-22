@@ -444,6 +444,7 @@ button.projectRow {
 .coinInfos {
     display: flex;
     justify-content: space-between;
+    width: 125%;
     align-items: center;
     flex-grow: 1;
     color: #fff;
@@ -452,10 +453,6 @@ button.projectRow {
 
 .coinIco {
     margin-right: 10px;
-}
-
-.coinLabel {
-    margin-right: auto;
 }
 
 .coinAmount {
@@ -673,12 +670,12 @@ h3 {
 
 .claimedStatus.claimed {
     color: #30fd36;
-    border: solid 1px grey;
+    border: solid 0px grey;
 }
 
 .claimedStatus.notClaimed {
     color: #f8c62a;
-    border: solid 1px grey;
+    border: solid 0px grey;
 }
 
 .task-container {
@@ -733,8 +730,8 @@ h3 {
 }
 
 .task-goals {
-    color: #00ff0d;
-    text-shadow: 0 0 5px #57fe57;
+    color: aliceblue;
+    text-shadow: 0 0 5px aliceblue;
 }
 
 .task-subheader {

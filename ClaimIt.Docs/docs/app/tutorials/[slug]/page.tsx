@@ -4,12 +4,14 @@ import { useState } from "react"
 import Link from "next/link"
 import { ChevronLeft, ExternalLink, Copy, Check, Star, CheckCircle, Share2, Clock } from "lucide-react"
 import { ProgressBar } from "@/components/progress-bar"
+import { time } from 'console';
 
 
 // Tutorial data
 const tutorialsData = {
   rainmakr: {
     name: "RainMakr",
+    x: "https://x.com/rainmakr",
     badge: "Testnet",
     badgeColor: "purple",
     raised: "$11M raised",
@@ -18,31 +20,57 @@ const tutorialsData = {
     image: "https://pbs.twimg.com/profile_images/1819638283133243394/vQq0fW9F_400x400.jpg",
     content: [
       {
-        type: "text",
-        text: "Complete socials tasks, complete Quiz and claim your OG role",
+        text: "Complete socials tasks, make volume on testnet and claim your Discord roles to earn rewards!",
       },
       {
-        type: "rocket",
-        text: "Complete Galxe tasks",
+        type: "🚀",
+        text: "Complete Zealy tasks",
         subItems: [
           {
             type: "link",
             text: "Visit:",
-            link: "https://app.galxe.com/quest/EV7vtWNy",
-            linkText: "app.galxe.com/quest/EV7vtWNy",
+            link: "https://zealy.io/cw/rainmakr/invite/O1msJS9W6ylgWI8eyX6bH",
+            linkText: "https://zealy.io/cw/rainmakr/invite/",
           },
           {
             type: "text",
             text: "Complete all socials tasks",
           },
           {
-            type: "copy",
-            text: "Quiz Answer:",
-            copyText: "D, A, B, C, E, A, A, D, A",
+            type: "text",
+            text: "Claim your roles",
+          },
+        ],
+      },
+      {
+        type: "🤑",
+        text: "Have a minimum of 2ETH of volume",
+        subItems: [
+          {
+            type: "link",
+            text: "Get some faucet on MegaEth:",
+            link: "testnet.megaeth.com/#4",
+            linkText: "testnet.megaeth.com",
+          },
+          {
+            type: "link",
+            text: "Visit RainAI:",
+            link: "https://rainmakr.xyz/en/rainai",
+            linkText: "https://rainmakr.xyz/en/rainai",
+          },
+          {
+            type: "link",
+            text: "or RainPump:",
+            link: "https://rainmakr.xyz/en/rainpump",
+            linkText: "https://rainmakr.xyz/en/rainpump",
           },
           {
             type: "text",
-            text: "Claim your roles",
+            text: "Buy & Sell tokens to get a total volume of 2ETH on your account",
+          },
+          {
+            type: "text",
+            text: "Claim your rewards",
           },
         ],
       },
@@ -51,6 +79,7 @@ const tutorialsData = {
   },
   nodepay: {
     name: "NodePay",
+    x: "https://x.com/NodePay",
     badge: "Season 4",
     badgeColor: "blue",
     raised: "$11M raised",
@@ -77,16 +106,19 @@ const tutorialsData = {
     ],
     platformPreview: true,
   },
-  galxe: {
-    name: "@Galxe_Official",
-    badge: "Credentials",
-    badgeColor: "green",
-    raised: "$8M raised",
-    title: "Web3 credential network",
+  Kaisar: {
+    name: "@KaisarNetwork",
+    x: "https://x.com/KaisarNetwork",
+    image: "https://pbs.twimg.com/profile_images/1776202066282926080/5ppDFq9k_400x400.jpg",
+    badge: "Gros Potentiel",
+    badgeColor: "blue",
+    raised: "$54M raised",
+    title: "🚀 Guide rapide",
+    estimatedTime: "10 minutes",
     content: [
       {
-        type: "text",
-        text: "Complete campaign tasks to earn points",
+        type: "",
+        text: "🔹 Étape 1 – CRÉATION DE COMPTE",
         subItems: [
           {
             type: "link",
@@ -96,12 +128,98 @@ const tutorialsData = {
           },
           {
             type: "text",
-            text: "Connect wallet and social accounts",
+            text: "Crée un compte sur la plateforme: 👉 Renseigne une adresse mail, connecte ton compte X (Twitter), Discord, etc.",
+          },
+        ],
+      },
+      {
+        type: "",
+        text: "🔹 Étape 2 – INSTALLATION DE L'APP",
+        subItems: [
+          {
+            type: "text",
+            text: "Télécharge et installe l’extension nécessaire au fonctionnement du programme.",
+          },
+          {
+            type: "link",
+            text: "Lien :",
+            link: "https://chromeextensions.com/KaisarNetwork",
+            linkText: "chrome-extensions.com/Kaisar",
+          },
+        ],
+      },
+      {
+        type: "",
+        text: "🔹 Étape 3 – CONNECTE TON WALLET",
+        subItems: [
+          {
+            type: "text",
+            text: "Connecte ton portefeuille crypto (MetaMask, etc.) à l’extension.",
           },
           {
             type: "text",
-            text: "Complete at least 5 campaigns",
+            text: "✅ Effectue la vérification (souvent sur le réseau Peaq) pour être pleinement éligible."
           },
+          {
+            type: "link",
+            text: "Lien :",
+            link: "https://chromeextensions.com/KaisarNetwork",
+            linkText: "chrome-extensions.com/Kaisar",
+          },
+        ],
+      },
+      {
+        type: "",
+        text: "🔹 Étape 4 – CLAIM LES POINTS",
+        subItems: [
+          {
+            type: "text",
+            text: "🎯 Effectue les missions proposées dans la section Tasks. Tu vas gagner des points en accomplissant diverses tâches.",
+          },
+          {
+            type: "text",
+            text: "📆 Pense à check-in chaque jour pour gratter un max de points facilement."
+          }
+        ],
+      },
+      {
+        type: "",
+        text: "🔹 Étape 5 – SOIS ACTIF",
+        subItems: [
+          {
+            type: "text",
+            text: "Quand tu as suffisamment de points :",
+          },
+          {
+            type: "text",
+            text: "➡️ Réalise des roues de fortune pour gagner des récompenses.",
+          },
+          {
+            type: "text",
+            text: "➡️ Continue à interagir pour maximiser tes rewards",
+          },
+          {
+            type: "text",
+            text: "➡️ Fais vivre ton compte (activité = visibilité = gains 💸)",
+          },
+        ],
+      },
+      {
+        type: "",
+        text: "✅ Astuce de pro ",
+        subItems: [
+          {
+            type: "text",
+            text: "Active les notifications de missions pour ne rien rater !",
+          },
+          {
+            type: "text",
+            text: "Utilise plusieurs wallets en restant discret si tu multiplier tes gains.",
+          },
+          {
+            type: "text",
+            text: "N’oublie jamais le check-in journalier (c’est littéralement des points gratuits).",
+          }
         ],
       },
     ],
@@ -177,7 +295,7 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <img className="h-10 w-10 rounded-full" src={tutorial.image} />
-              {tutorial.name}
+              <a href={tutorial.x}>{tutorial.name}</a>
               <span className={`px-2 py-0.5 text-xs rounded-full border ${getBadgeStyles(tutorial.badgeColor)}`}>
                 {tutorial.badge}
               </span>
@@ -212,15 +330,23 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
                   </button>
 
                   {copied && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-blue-600 text-white text-sm rounded shadow">
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 transition-colors">
                       Copied!
                     </div>
                   )}
                 </div>
               </div>
             </div>
+          
           </div>
+          <a className="text-gray-300">KaiSar @KaisarNetwork is a decentralized AI infrastructure where your compute is your currency.</a>
+          <strong className="text-300">
+            <h3>💰 Coût : &lt;1$ </h3>
+            <h3>💸 Airdrop Potentiel : 1000$+</h3>
+            <h3>⏳ Temps par jour : {tutorial.estimatedTime}</h3>
+          </strong>
           <div className="flex items-center justify-between mb-2.5">
+
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Clock className="h-4 w-4" />
               <span>Estimated time: {tutorial.estimatedTime}</span>
@@ -236,10 +362,11 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
               <div key={index} className="space-y-3">
                 <div className="flex items-start gap-2">
                   <div className="min-w-5 pt-1">
-                    {item.type === "rocket" ? <span className="text-red-500">🚀</span> : "•"}
+
+                    <span className="text-red-500">{item.type}</span>
                   </div>
                   <div>
-                    <span className="font-medium">{item.text}</span>
+                    <h1 className="font-medium"><strong>{item.text}</strong></h1>
                   </div>
                 </div>
 
@@ -278,7 +405,8 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
                           )}
                         </div>
                       </div>
-                    ))}
+                    ))}                <br></br>
+
                   </div>
                 )}
               </div>
@@ -297,7 +425,9 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
               </div>
             </div>
           )}
-
+          <div className="flex items-center justify-center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_Cqklhy4Dac" frameborder="0" allowfullscreen></iframe>
+          </div>
           {tutorial.platformPreview && (
             <div className="mt-4 bg-gray-800/50 p-3 rounded-lg border border-gray-700">
               <div className="text-sm font-medium mb-2">Platform Preview</div>
@@ -314,6 +444,7 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
               </div>
             </div>
           )}
+          
         </main>
 
         <footer className="mt-12 text-center text-gray-500 text-sm">
