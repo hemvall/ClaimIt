@@ -4,12 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { ChevronLeft, ExternalLink, Copy, Check, Star, Share2, Clock } from "lucide-react"
 import { ProgressBar } from "@/components/progress-bar"
-import { Metadata } from "next"
-export const metadata: Metadata = {
-  title: "Claimit - Airdrop Tutorial",
-  description: "Complete step-by-step guides to claim your tokens from the hottest crypto projects",
-}
-
 
 // Tutorial data
 const tutorialsData = {
