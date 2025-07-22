@@ -226,7 +226,7 @@ const tutorialsData = {
 }
 
 export default function TutorialPage({ params }: { params: { slug: string } }) {
-  const { slug } = React.use(params);
+  const { slug } = params;
   const tutorial = tutorialsData[slug as keyof typeof tutorialsData]
   const [copiedText, setCopiedText] = useState<string | null>(null)
 
