@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from "react"
 import Link from "next/link"
-import { ChevronLeft, ExternalLink, Copy, Check, Star, Share2, Clock } from "lucide-react"
+import { ChevronLeft, ExternalLink, Star, Share2, Clock } from "lucide-react"
 import { ProgressBar } from "@/components/progress-bar"
 
 
@@ -389,19 +389,19 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
                             </a>
                           )}
 
-                          {/* {subItem.type === "copy" && (
-                            <div
-                              className="bg-gray-800 px-2 py-1 rounded flex items-center gap-2 cursor-pointer"
-                              onClick={() => copyToClipboard(subItem.copyText)}
-                            >
-                              <span>{subItem.copyText}</span>
-                              {copiedText === subItem.copyText ? (
-                                <Check className="h-4 w-4 text-green-400" />
-                              ) : (
-                                <Copy className="h-4 w-4 text-gray-400" />
-                              )}
-                            </div>
-                          )} */}
+                            {/* {subItem.type === "copy" && (
+                              <div
+                                className="bg-gray-800 px-2 py-1 rounded flex items-center gap-2 cursor-pointer"
+                                onClick={() => copyToClipboard(subItem.copyText)}
+                              >
+                                <span>{subItem.copyText}</span>
+                                {copiedText === subItem.copyText ? (
+                                  <Check className="h-4 w-4 text-green-400" />
+                                ) : (
+                                  <Copy className="h-4 w-4 text-gray-400" />
+                                )}
+                              </div>
+                            )} */}
                         </div>
                       </div>
                     ))}                <br></br>
