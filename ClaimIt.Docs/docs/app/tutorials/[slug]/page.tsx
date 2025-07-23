@@ -1,8 +1,8 @@
 "use client"
 import React from 'react';
-import { useState } from "react"
+// import { useState } from "react"
 import Link from "next/link"
-import { ChevronLeft, ExternalLink, Star, Share2, Clock } from "lucide-react"
+import { ChevronLeft, ExternalLink, Star, Share2, Clock } from "lucide-react" //Copy, Check, 
 import { ProgressBar } from "@/components/progress-bar"
 
 
@@ -228,7 +228,7 @@ const tutorialsData = {
 export default function TutorialPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const tutorial = tutorialsData[slug as keyof typeof tutorialsData]
-  const [copiedText, setCopiedText] = useState<string | null>(null)
+  // const [copiedText, setCopiedText] = useState<string | null>(null)
 
   if (!tutorial) {
     return (
@@ -244,24 +244,24 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
     )
   }
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text)
-    setCopiedText(text)
-    setTimeout(() => setCopiedText(null), 2000)
-  }
+  // const copyToClipboard = (text: string) => {
+  //   navigator.clipboard.writeText(text)
+  //   setCopiedText(text)
+  //   setTimeout(() => setCopiedText(null), 2000)
+  // }
 
-  const [copied, setCopied] = useState(false);
-  const textToCopy = window.location.href;
+  // const [copied, setCopied] = useState(false);
+  // const textToCopy = window.location.href;
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(textToCopy);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Copy failed:", err);
-    }
-  };
+  // const handleCopy = async () => {
+  //   try {
+  //     await navigator.clipboard.writeText(textToCopy);
+  //     setCopied(true);
+  //     setTimeout(() => setCopied(false), 2000);
+  //   } catch (err) {
+  //     console.error("Copy failed:", err);
+  //   }
+  // };
 
   const getBadgeStyles = (color: string) => {
     switch (color) {
@@ -321,18 +321,18 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
               <div className="p-0">
                 <div className="relative inline-block">
                   <button
-                    onClick={handleCopy}
+                    // onClick={handleCopy}
                     className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
                     aria-label="Share tutorial">
                     <Share2 className="h-4 w-4" />
                     <span className="text-sm">Share</span>
                   </button>
 
-                  {copied && (
+                  {/* {copied && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 transition-colors">
                       Copied!
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
