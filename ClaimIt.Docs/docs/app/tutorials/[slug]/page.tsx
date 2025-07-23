@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ChevronLeft, ExternalLink, Copy, Check, Star, Share2, Clock } from "lucide-react"
 import { ProgressBar } from "@/components/progress-bar"
 
+
 // Tutorial data
 const tutorialsData = {
   rainmakr: {
@@ -223,17 +224,11 @@ const tutorialsData = {
     ],
   },
 }
-type Props = {
-  params: {
-    slug: string
-  }
-}
-export default function TutorialPage({ params }: Props) {
+
+export default function TutorialPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  
   const tutorial = tutorialsData[slug as keyof typeof tutorialsData]
   const [copiedText, setCopiedText] = useState<string | null>(null)
-  const [copied, setCopied] = useState(false);
 
   if (!tutorial) {
     return (
@@ -255,6 +250,7 @@ export default function TutorialPage({ params }: Props) {
     setTimeout(() => setCopiedText(null), 2000)
   }
 
+  const [copied, setCopied] = useState(false);
   const textToCopy = window.location.href;
 
   const handleCopy = async () => {
@@ -393,7 +389,7 @@ export default function TutorialPage({ params }: Props) {
                             </a>
                           )}
 
-                          {subItem.type === "copy" && (
+                          {/* {subItem.type === "copy" && (
                             <div
                               className="bg-gray-800 px-2 py-1 rounded flex items-center gap-2 cursor-pointer"
                               onClick={() => copyToClipboard(subItem.copyText)}
@@ -405,7 +401,7 @@ export default function TutorialPage({ params }: Props) {
                                 <Copy className="h-4 w-4 text-gray-400" />
                               )}
                             </div>
-                          )}
+                          )} */}
                         </div>
                       </div>
                     ))}                <br></br>
