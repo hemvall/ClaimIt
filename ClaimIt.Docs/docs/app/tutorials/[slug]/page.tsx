@@ -1,10 +1,8 @@
 "use client"
-import React from 'react';
-// import { useState } from "react"
+import { use } from "react" // Add this import
 import Link from "next/link"
-import { ChevronLeft, ExternalLink, Star, Share2, Clock } from "lucide-react" //Copy, Check, 
+import { ChevronLeft, ExternalLink, Star, Share2, Clock } from "lucide-react"
 import { ProgressBar } from "@/components/progress-bar"
-
 
 // Tutorial data
 const tutorialsData = {
@@ -84,7 +82,8 @@ const tutorialsData = {
     raised: "$11M raised",
     title: "Decentralized trading platform",
     estimatedTime: "15 min",
-    image: "https://play-lh.googleusercontent.com/x7F1sCseMpHlWuBYYh3vUaXvEASveBMCO6bejozZ7_FGQODAEKOYlcnNB-91xLXGrg=w240-h480-rw",
+    image:
+      "https://play-lh.googleusercontent.com/x7F1sCseMpHlWuBYYh3vUaXvEASveBMCO6bejozZ7_FGQODAEKOYlcnNB-91xLXGrg=w240-h480-rw",
     content: [
       {
         type: "text",
@@ -137,7 +136,7 @@ const tutorialsData = {
         subItems: [
           {
             type: "text",
-            text: "Télécharge et installe l’extension nécessaire au fonctionnement du programme.",
+            text: "Télécharge et installe l'extension nécessaire au fonctionnement du programme.",
           },
           {
             type: "link",
@@ -153,11 +152,11 @@ const tutorialsData = {
         subItems: [
           {
             type: "text",
-            text: "Connecte ton portefeuille crypto (MetaMask, etc.) à l’extension.",
+            text: "Connecte ton portefeuille crypto (MetaMask, etc.) à l'extension.",
           },
           {
             type: "text",
-            text: "✅ Effectue la vérification (souvent sur le réseau Peaq) pour être pleinement éligible."
+            text: "✅ Effectue la vérification (souvent sur le réseau Peaq) pour être pleinement éligible.",
           },
           {
             type: "link",
@@ -177,8 +176,8 @@ const tutorialsData = {
           },
           {
             type: "text",
-            text: "📆 Pense à check-in chaque jour pour gratter un max de points facilement."
-          }
+            text: "📆 Pense à check-in chaque jour pour gratter un max de points facilement.",
+          },
         ],
       },
       {
@@ -217,22 +216,25 @@ const tutorialsData = {
           },
           {
             type: "text",
-            text: "N’oublie jamais le check-in journalier (c’est littéralement des points gratuits).",
-          }
+            text: "N'oublie jamais le check-in journalier (c'est littéralement des points gratuits).",
+          },
         ],
       },
     ],
   },
 }
-type PageProps  = {
-  params: {
-    slug: string;
-  };
-};
+
+// Update the type to reflect that params is now a Promise
+type PageProps = {
+  params: Promise<{
+    slug: string
+  }>
+}
+
 export default function TutorialPage({ params }: PageProps) {
-  const { slug } = params;
+  // Use React's `use` function to read the promise in a Client Component
+  const { slug } = use(params)
   const tutorial = tutorialsData[slug as keyof typeof tutorialsData]
-  // const [copiedText, setCopiedText] = useState<string | null>(null)
 
   if (!tutorial) {
     return (
@@ -247,25 +249,6 @@ export default function TutorialPage({ params }: PageProps) {
       </div>
     )
   }
-
-  // const copyToClipboard = (text: string) => {
-  //   navigator.clipboard.writeText(text)
-  //   setCopiedText(text)
-  //   setTimeout(() => setCopiedText(null), 2000)
-  // }
-
-  // const [copied, setCopied] = useState(false);
-  // const textToCopy = window.location.href;
-
-  // const handleCopy = async () => {
-  //   try {
-  //     await navigator.clipboard.writeText(textToCopy);
-  //     setCopied(true);
-  //     setTimeout(() => setCopied(false), 2000);
-  //   } catch (err) {
-  //     console.error("Copy failed:", err);
-  //   }
-  // };
 
   const getBadgeStyles = (color: string) => {
     switch (color) {
@@ -284,20 +267,17 @@ export default function TutorialPage({ params }: PageProps) {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white font-sans">
       <div className="max-w-4xl mx-auto p-6">
         <header className="mb-10">
-
           <div className="flex items-center gap-0.5 mb-2">
             <img className="h-14 w-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/9011/9011549.png" />
             <h1 className="text-3xl font-bold">Claimit</h1>
           </div>
-
           <Link href="/" className="text-blue-400 hover:underline flex items-center gap-2 mb-6">
             <ChevronLeft className="h-4 w-4" />
             Back to tutorials
           </Link>
-
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-2xl font-bold flex items-center gap-2">
-              <img className="h-10 w-10 rounded-full" src={tutorial.image} />
+              <img className="h-10 w-10 rounded-full" src={tutorial.image || "/placeholder.svg"} />
               <a href={tutorial.x}>{tutorial.name}</a>
               <span className={`px-2 py-0.5 text-xs rounded-full border ${getBadgeStyles(tutorial.badgeColor)}`}>
                 {tutorial.badge}
@@ -305,51 +285,38 @@ export default function TutorialPage({ params }: PageProps) {
             </h2>
             <span className="text-sm text-green-400">{tutorial.raised}</span>
           </div>
-
           <div className="flex items-center justify-between mb-2.5">
             <h3 className="text-2xl font-medium text-pink-400">{tutorial.title}</h3>
             <div className="flex items-center gap-3">
               <button
-                // onClick={handleFavorite}
                 className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
                 aria-label="Remove from favorites"
               >
-                <Star
-                  className="h-4 w-4"
-                  fill="#FBBF24"
-                  color="#FBBF24"
-                />
+                <Star className="h-4 w-4" fill="#FBBF24" color="#FBBF24" />
                 <span className="text-sm">Favorited</span>
               </button>
-
               <div className="p-0">
                 <div className="relative inline-block">
                   <button
-                    // onClick={handleCopy}
                     className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
-                    aria-label="Share tutorial">
+                    aria-label="Share tutorial"
+                  >
                     <Share2 className="h-4 w-4" />
                     <span className="text-sm">Share</span>
                   </button>
-
-                  {/* {copied && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 transition-colors">
-                      Copied!
-                    </div>
-                  )} */}
                 </div>
               </div>
             </div>
-          
           </div>
-          <a className="text-gray-300">KaiSar @KaisarNetwork is a decentralized AI infrastructure where your compute is your currency.</a>
+          <a className="text-gray-300">
+            KaiSar @KaisarNetwork is a decentralized AI infrastructure where your compute is your currency.
+          </a>
           <strong className="text-300">
             <h3>💰 Coût : &lt;1$ </h3>
             <h3>💸 Airdrop Potentiel : 1000$+</h3>
             <h3>⏳ Temps par jour : {tutorial.estimatedTime}</h3>
           </strong>
           <div className="flex items-center justify-between mb-2.5">
-
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Clock className="h-4 w-4" />
               <span>Estimated time: {tutorial.estimatedTime}</span>
@@ -358,21 +325,20 @@ export default function TutorialPage({ params }: PageProps) {
           </div>
           <ProgressBar progress={32} />
         </header>
-
         <main className="space-y-3 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6">
           <div className="space-y-4">
             {tutorial.content.map((item, index) => (
               <div key={index} className="space-y-3">
                 <div className="flex items-start gap-2">
                   <div className="min-w-5 pt-1">
-
                     <span className="text-red-500">{item.type}</span>
                   </div>
                   <div>
-                    <h1 className="font-medium"><strong>{item.text}</strong></h1>
+                    <h1 className="font-medium">
+                      <strong>{item.text}</strong>
+                    </h1>
                   </div>
                 </div>
-
                 {item.subItems && (
                   <div className="ml-7 space-y-2 text-gray-300">
                     {item.subItems.map((subItem, subIndex) => (
@@ -380,7 +346,6 @@ export default function TutorialPage({ params }: PageProps) {
                         <div className="min-w-5">-</div>
                         <div className="flex items-center gap-2">
                           <span>{subItem.text}</span>
-
                           {subItem.type === "link" && (
                             <a
                               href={subItem.link}
@@ -392,30 +357,15 @@ export default function TutorialPage({ params }: PageProps) {
                               <ExternalLink className="h-3 w-3" />
                             </a>
                           )}
-
-                            {/* {subItem.type === "copy" && (
-                              <div
-                                className="bg-gray-800 px-2 py-1 rounded flex items-center gap-2 cursor-pointer"
-                                onClick={() => copyToClipboard(subItem.copyText)}
-                              >
-                                <span>{subItem.copyText}</span>
-                                {copiedText === subItem.copyText ? (
-                                  <Check className="h-4 w-4 text-green-400" />
-                                ) : (
-                                  <Copy className="h-4 w-4 text-gray-400" />
-                                )}
-                              </div>
-                            )} */}
                         </div>
                       </div>
-                    ))}                <br></br>
-
+                    ))}
+                    <br></br>
                   </div>
                 )}
               </div>
             ))}
           </div>
-
           {tutorial.backers && (
             <div className="mt-4 bg-gray-800/50 p-3 rounded-lg border border-gray-700">
               <div className="text-sm font-medium mb-2">Backed by</div>
@@ -429,7 +379,13 @@ export default function TutorialPage({ params }: PageProps) {
             </div>
           )}
           <div className="flex items-center justify-center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/_Cqklhy4Dac" frameborder="0" allowfullscreen></iframe>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/_Cqklhy4Dac"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
           </div>
           {tutorial.platformPreview && (
             <div className="mt-4 bg-gray-800/50 p-3 rounded-lg border border-gray-700">
@@ -447,9 +403,7 @@ export default function TutorialPage({ params }: PageProps) {
               </div>
             </div>
           )}
-          
         </main>
-
         <footer className="mt-12 text-center text-gray-500 text-sm">
           <p>© 2025 Claimit. All rights reserved.</p>
           <p className="mt-1">Disclaimer: Completing tasks does not guarantee airdrops. DYOR.</p>
