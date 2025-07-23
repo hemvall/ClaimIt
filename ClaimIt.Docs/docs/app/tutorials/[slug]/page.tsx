@@ -73,6 +73,7 @@ const tutorialsData = {
       },
     ],
     backers: ["Robot Ventures", "1k(x)", "GSR", "Maven 11"],
+    platformPreview: true,
   },
   nodepay: {
     name: "NodePay",
@@ -102,6 +103,7 @@ const tutorialsData = {
         ],
       },
     ],
+    backers: ["Robot Ventures", "1k(x)", "GSR", "Maven 11"],
     platformPreview: true,
   },
   Kaisar: {
@@ -221,6 +223,8 @@ const tutorialsData = {
         ],
       },
     ],
+    backers: ["Robot Ventures", "1k(x)", "GSR", "Maven 11"],
+    platformPreview: true,
   },
 }
 
