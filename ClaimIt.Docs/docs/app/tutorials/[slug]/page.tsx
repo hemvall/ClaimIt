@@ -224,12 +224,12 @@ const tutorialsData = {
     ],
   },
 }
-type Props = {
+type PageProps  = {
   params: {
     slug: string;
   };
 };
-export default function TutorialPage({ params }: Props) {
+export default function TutorialPage({ params }: PageProps) {
   const { slug } = params;
   const tutorial = tutorialsData[slug as keyof typeof tutorialsData]
   // const [copiedText, setCopiedText] = useState<string | null>(null)
