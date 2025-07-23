@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ChevronRight, ChevronLeft } from "lucide-react"
+
 
 export default function Home() {
   const tutorials = [
@@ -30,16 +31,22 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white font-sans">
       <div className="max-w-4xl mx-auto p-6">
         <header className="mb-10">
-          <div className="flex items-center gap-0.5 mb-2">
-            <img className="h-14 w-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/9011/9011549.png"/>
-            <h1 className="text-3xl font-bold">Claimit</h1>
+          <div className="flex items-center gap-2 mb-4">
+            <div className="relative">
+              <img
+                className="h-16 w-16 rounded-full ring-2 ring-purple-500/50"
+                src="https://cdn-icons-png.flaticon.com/512/9011/9011549.png"
+                alt="Claimit Logo"
+              />
+              <div className="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-gray-900"></div>
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Claimit
+              </h1>
+              <p className="text-sm text-gray-400">Airdrop Tutorial Platform</p>
+            </div>
           </div>
-          <h2 className="text-4xl font-extrabold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-            Airdrop Tutorials
-          </h2>
-          <p className="text-gray-400">
-            Complete step-by-step guides to claim your tokens from the hottest crypto projects
-          </p>
         </header>
 
         <main className="space-y-6">

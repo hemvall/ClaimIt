@@ -121,14 +121,12 @@ const tutorialsData = {
         text: "🔹 Étape 1 – CRÉATION DE COMPTE",
         subItems: [
           {
-            type: "link",
-            text: "Visit:",
-            link: "https://galxe.com/campaigns",
-            linkText: "galxe.com/campaigns",
-          },
-          {
             type: "text",
             text: "Crée un compte sur la plateforme: 👉 Renseigne une adresse mail, connecte ton compte X (Twitter), Discord, etc.",
+          },
+          {
+            type: "image",
+            link: "https://lh3.googleusercontent.com/nIKVFi79FAnod_6crvWI4Iu3-8dvm75wXy1iZr9slp2kC_FbgzY3UXz-6a_GNR2WbJW6w9xOdz0cSXyge7PLBLSNRQ=s1280-w1280-h800",
           },
         ],
       },
@@ -144,6 +142,11 @@ const tutorialsData = {
             type: "link",
             text: "Lien :",
             link: "https://chromeextensions.com/KaisarNetwork",
+            linkText: "chrome-extensions.com/Kaisar",
+          },
+          {
+            type: "image",
+            link: "https://upload.wikimedia.org/wikipedia/fr/thumb/7/7d/FC_Kaisar_logo.svg/278px-FC_Kaisar_logo.svg.png",
             linkText: "chrome-extensions.com/Kaisar",
           },
         ],
@@ -271,9 +274,21 @@ export default function TutorialPage({ params }: PageProps) {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white font-sans">
       <div className="max-w-4xl mx-auto p-6">
         <header className="mb-10">
-          <div className="flex items-center gap-0.5 mb-2">
-            <img className="h-14 w-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/9011/9011549.png" />
-            <h1 className="text-3xl font-bold">Claimit</h1>
+          <div className="flex items-center gap-2 mb-4">
+            <div className="relative">
+              <img
+                className="h-16 w-16 rounded-full ring-2 ring-purple-500/50"
+                src="https://cdn-icons-png.flaticon.com/512/9011/9011549.png"
+                alt="Claimit Logo"
+              />
+              <div className="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-gray-900"></div>
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Claimit
+              </h1>
+              <p className="text-sm text-gray-400">Airdrop Tutorial Platform</p>
+            </div>
           </div>
           <Link href="/" className="text-blue-400 hover:underline flex items-center gap-2 mb-6">
             <ChevronLeft className="h-4 w-4" />
@@ -357,9 +372,15 @@ export default function TutorialPage({ params }: PageProps) {
                               rel="noopener noreferrer"
                               className="text-blue-400 hover:underline flex items-center gap-1"
                             >
-                              {subItem.linkText}
+                              {subItem.link}
                               <ExternalLink className="h-3 w-3" />
                             </a>
+                          )}
+                          {subItem.type === "image" && (
+                            <img
+                              src={subItem.link}
+                              className="text-blue-400 hover:underline flex items-center gap-1"
+                            /> 
                           )}
                         </div>
                       </div>
