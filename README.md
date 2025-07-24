@@ -21,6 +21,11 @@ Stop spending time hunting for airdrop opportunities and tracking details across
 4. **Receive Notifications**: Get real-time alerts when a new airdrop is available for your wallet.
 
 ## Demo 
+
+**Tutorials**
+<img width="1919" height="874" alt="image" src="https://github.com/user-attachments/assets/1a2a8b30-ec5c-46d0-a76f-9294dba12ccd" />
+<img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/3cabc3e8-09ba-4680-a951-bdc5e4a784f1" />
+<img width="1916" height="872" alt="image" src="https://github.com/user-attachments/assets/7c074fbf-acf7-4361-b41b-b0d93e93c732" />
 **Web Extension**
 
 
@@ -29,11 +34,6 @@ Stop spending time hunting for airdrop opportunities and tracking details across
 ![image](https://github.com/user-attachments/assets/adbe1ccc-3b6e-4370-85d8-5f09da9464a3)
 ![image](https://github.com/user-attachments/assets/508e6843-8fd4-4a87-a459-fe8645914691)
 ![image](https://github.com/user-attachments/assets/2b4ba6eb-9478-4948-bab3-d99cea327aa6)
-
-**Tutorials**
-<img width="1919" height="874" alt="image" src="https://github.com/user-attachments/assets/1a2a8b30-ec5c-46d0-a76f-9294dba12ccd" />
-<img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/3cabc3e8-09ba-4680-a951-bdc5e4a784f1" />
-<img width="1916" height="872" alt="image" src="https://github.com/user-attachments/assets/7c074fbf-acf7-4361-b41b-b0d93e93c732" />
 
 
 ## 👫 Contributing
