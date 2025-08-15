@@ -50,8 +50,8 @@ document.getElementById('tipbutton').addEventListener('click', async function ()
             <br>            <br>
             <a style="font-size:14px; margin: 0 10px;">If ClaimIt helped you, a small donation goes a long way to keep us going! ❤️</a><br>
             <br>
-            <div class="center">
-            <button id="actionButton" class="donateButton">Donate</button>
+            <div class="center">           
+                <button id="actionButton" class="donateButton">Donate</button>
             </div>
             <ul class="tipList">
                 <li>🎖️    Unlock an exclusive badge to show your support!</li>
@@ -195,7 +195,76 @@ function triggerConfetti() {
     }, 1000);
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Ajouter les event listeners pour les boutons de copie
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const address = this.getAttribute('data-address');
+            copyToClipboard(address, this);
+        });
+    });
+});
+
+function copyToClipboard(text, button) {
+    // Copier dans le presse-papiers
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () {
+            showCopyFeedback(button, true);
+        }, function () {
+            fallbackCopy(text, button);
+        });
+    } else {
+        fallbackCopy(text, button);
+    }
+}
+
+function fallbackCopy(text, button) {
+    // Méthode de fallback pour les navigateurs plus anciens
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+        document.execCommand('copy');
+        showCopyFeedback(button, true);
+    } catch (err) {
+        showCopyFeedback(button, false);
+    }
+
+    document.body.removeChild(textArea);
+}
+
+function showCopyFeedback(button, success) {
+    const originalText = button.innerHTML;
+    const type = button.getAttribute('data-type');
+
+    if (success) {
+        button.innerHTML = '✅ Adresse copiée !';
+        button.style.background = 'linear-gradient(135deg, #10b981, #06ffa5)';
+    } else {
+        button.innerHTML = '❌ Erreur de copie';
+        button.style.background = 'linear-gradient(135deg, #ef4444, #f87171)';
+    }
+
+    setTimeout(() => {
+        button.innerHTML = originalText;
+        // Restaurer le gradient original selon le type de wallet
+        if (type === 'solana') {
+            button.style.background = 'linear-gradient(135deg, #9945ff, #14f195)';
+        } else {
+            button.style.background = 'linear-gradient(135deg, #627eea, #06ffa5)';
+        }
+    }, 2000);
+}
+
 function getRandomColor() {
     const colors = ["#ff0a54", "#ff477e", "#ff7096", "#ff85a1", "#ff99ac", "#fb5607", "#ffbe0b", "#3a86ff"];
     return colors[Math.floor(Math.random() * colors.length)];
 }
+

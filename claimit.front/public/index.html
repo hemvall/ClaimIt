@@ -19,7 +19,7 @@
 <body>
     <div id="addUserAirdropNotif"
         style="position: sticky; z-index: 9999999; top: 50px; display: flex; justify-content: center; padding: 8px 16px; background-color: #10b981; color: #ffffff; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); font-size: 0.9rem; display: none;">
-        Added this  to your projects
+        Added this to your projects
     </div>
     <div id="notificationPopup"></div>
     <div id="airdropPopup"></div>
@@ -104,7 +104,105 @@
             </div>
         </div>
         <img src="./assets/money.gif" alt="Money GIF" class="money-gif">
+        <div class="footer fade-in">
+
+            <!-- Wallets Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px;">
+                
+                <!-- Solana Wallet -->
+                <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); transition: all 0.3s ease; position: relative; overflow: hidden;" 
+                     onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.3)';"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.boxShadow='none';">
+                    
+                    <!-- Top Border -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #9945ff, #14f195); border-radius: 20px 20px 0 0;"></div>
+                    
+                    <!-- Wallet Header -->
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-right: 15px; background: linear-gradient(135deg, #9945ff, #14f195); color: white;">
+                            S
+                        </div>
+                        <div>
+                            <div style="font-size: 1.3rem; font-weight: 600; color: white;">Solana</div>
+                            <div style="font-size: 0.9rem; color: #a1a1aa;">Réseau Solana (SOL, USDC)</div>
+                        </div>
+                    </div>
+
+                    <!-- Address Container -->
+                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 15px; margin-bottom: 20px;">
+                        <div style="font-size: 0.8rem; color: #a1a1aa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+                            Adresse Solana
+                        </div>
+                        <div style="font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.9rem; color: #e5e5e5; word-break: break-all; line-height: 1.4;">
+                            49ujx....CoxZ
+                        </div>
+                    </div>
+
+                    <!-- Copy Button -->
+                    <button class="copy-btn" data-address="49ujxTPGCciW2vYcEUTpZBq62tW1JnfhWY6FbyDDCoxZ" data-type="solana"
+                            style="width: 100%; background: linear-gradient(135deg, #9945ff, #14f195); border: none; border-radius: 12px; padding: 12px 20px; color: white; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        📋 Copier l'adresse Solana
+                    </button>
+                </div>
+
+                <!-- EVM Wallet -->
+                <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); transition: all 0.3s ease; position: relative; overflow: hidden;"
+                     onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.3)';"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.boxShadow='none';">
+                    
+                    <!-- Top Border -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #627eea, #06ffa5); border-radius: 20px 20px 0 0;"></div>
+                    
+                    <!-- Wallet Header -->
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-right: 15px; background: linear-gradient(135deg, #627eea, #06ffa5); color: white;">
+                            E
+                        </div>
+                        <div>
+                            <div style="font-size: 1.3rem; font-weight: 600; color: white;">Ethereum / BSC</div>
+                            <div style="font-size: 0.9rem; color: #a1a1aa;">Compatible EVM (ETH, BNB, USDT)</div>
+                        </div>
+                    </div>
+
+                    <!-- Address Container -->
+                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 15px; margin-bottom: 20px;">
+                        <div style="font-size: 0.8rem; color: #a1a1aa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+                            Adresse EVM
+                        </div>
+                        <div style="font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.9rem; color: #e5e5e5; word-break: break-all; line-height: 1.4;">
+                            0xC58....A1a8D
+                        </div>
+                    </div>
+
+                    <!-- Copy Button -->
+                    <button class="copy-btn" data-address="0xC58416DEaBe1eeF936DDb17665688FAFC49A1a8D" data-type="evm"
+                            style="width: 100%; background: linear-gradient(135deg, #627eea, #06ffa5); border: none; border-radius: 12px; padding: 12px 20px; color: white; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        📋 Copier l'adresse EVM
+                    </button>
+                </div>
+            </div>
 
 </body>
+
+    <style>
+        .wallet-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .copy-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .copy-btn[data-type="solana"]:hover {
+            box-shadow: 0 8px 25px rgba(153, 69, 255, 0.4);
+        }
+        
+        .copy-btn[data-type="evm"]:hover {
+            box-shadow: 0 8px 25px rgba(98, 126, 234, 0.4);
+        }
+    </style>
+
 
 </html>

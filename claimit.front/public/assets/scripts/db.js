@@ -71,6 +71,7 @@ async function loadWallets() {
         const wallets = await response.json();
         const container = document.querySelector("#content2");
         container.innerHTML = ""; // Clear previous content
+        let userWalletsValue = 0;
 
         wallets.forEach(wallet => {
             const walletDiv = document.createElement("div");
@@ -93,8 +94,11 @@ async function loadWallets() {
             let platformIcon = "";
             if (wallet.platform == "Phantom") {
                 platformIcon = "https://187760183-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MVOiF6Zqit57q_hxJYp%2Fuploads%2FHEjleywo9QOnfYebBPCZ%2FPhantom_SVG_Icon.svg?alt=media&token=71b80a0a-def7-4f98-ae70-5e0843fdaaec";
-            } else {
+            } else if (wallet.platform == "Metamask") {
                 platformIcon = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/2048px-MetaMask_Fox.svg.png";
+            }
+            else {
+                platformIcon = "@/public/assets/ranks/bronze.webp";
             }
 
             // Create the platform icon element
@@ -110,9 +114,17 @@ async function loadWallets() {
             walletDiv.appendChild(label);
             walletDiv.appendChild(address);
 
-            // Add walletDiv to container
+
+            userWalletsValue += wallet.estimatedValue;
+            const walletsValue = document.createElement("h1");
+            walletsValue.classListName = "title";
+            walletsValue.textContent = `$${userWalletsValue}`;
+
+            // Add Divs to container
+            container.appendChild(walletsValue);
             container.appendChild(walletDiv);
         });
+
 
     } catch (error) {
         console.error("Error loading wallets:", error);
@@ -142,7 +154,7 @@ async function loadTasks() {
                 window.open(task.url, '_blank');
             });
         });
-        buttonWrapper.appendChild(openAllTasksButton);
+        // buttonWrapper.appendChild(openAllTasksButton);
         taskList.appendChild(buttonWrapper);
         // Loop through tasks and create their elements
         for (const task of tasks) {
@@ -194,14 +206,14 @@ async function loadTasks() {
                             <h3 style="margin: 0; margin-left: 10px; font-size: 14px; font-family: 'Orbitron', sans-serif;">${task.label}</h3>
                         </div>
                         <span style="display:none; color: #d33; font-size: 12px; padding: 4px 8px; margin-top: 15px; border-radius: 8px;">${task.level}</span>
+                        <a href="${task.url}" target="_blank" style="color: white; text-decoration: none;">
+                        <button id="StartQuest" class="niceButton" style="margin: 10px 0;">
+                        Start Quest →
+                        </button>
                         <div style="display: flex; align-items: center; margin: 5px; font-size: 14px; font-weight: 600; color: #666;">
                             <span>⏳ ${countdownHTML}</span>
                             <span style="margin-left: auto; color: white;">⚡ ${taskxp}XP</span>
                         </div>
-                        <a href="${task.url}" target="_blank" style="color: white; text-decoration: none;">
-                            <button id="StartQuest" class="niceButton">
-                                Start Quest →
-                            </button>
                         </a>
                     </div>
               `;
@@ -482,7 +494,7 @@ async function loadAirdrops() {
               <div class="Popup-container">
                   <h1 style="font-size: 28px; margin-top: 22px; font-weight: bold;">🎉<br>Claim Your $${airdrop.label}</h1>
                   <div style="margin-top: 5px;">
-                      <h2 style="font-size: 20px; color:#c4c4c4; margin:0;">Your rewards are waiting! Claim them now <a href="https://google.com" target="_blank" style="color: #57b3fe; font-weight: bold;">here</a>.</h2>
+                      <h2 style="font-size: 20px; color:#c4c4c4; margin:0;">Your rewards are waiting! Claim them now <a href="https://google.com" target="_blank" style="color: #57b3fe; font-weight: bold;">HERE</a>.</h2>
                       <h3 style="margin-top: 20px; font-size: 24px;">You’ve won 🎁:</h3>
                       <div style="display: flex; justify-content: center; align-items: center; margin-top: 5px;">
                           <input type="text" id="tokenAmount" placeholder="🪙 Allocated tokens" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc; text-align: center;">

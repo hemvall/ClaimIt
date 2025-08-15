@@ -3,122 +3,28 @@ import { use } from "react" // Add this import
 import Link from "next/link"
 import { ChevronLeft, ExternalLink, Star, Share2, Clock } from "lucide-react"
 import { ProgressBar } from "@/components/progress-bar"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Rocket, DollarSign, Target, Users } from "lucide-react"
 
 // Tutorial data
 const tutorialsData = {
-  rainmakr: {
-    name: "RainMakr",
-    x: "https://x.com/rainmakr",
-    badge: "Testnet",
-    badgeColor: "purple",
-    raised: "$11M raised",
-    title: "Make it rain! ⛈️",
-    estimatedTime: "15 min",
-    image: "https://pbs.twimg.com/profile_images/1819638283133243394/vQq0fW9F_400x400.jpg",
-    content: [
-      {
-        text: "Complete socials tasks, make volume on testnet and claim your Discord roles to earn rewards!",
-      },
-      {
-        type: "🚀",
-        text: "Complete Zealy tasks",
-        subItems: [
-          {
-            type: "link",
-            text: "Visit:",
-            link: "https://zealy.io/cw/rainmakr/invite/O1msJS9W6ylgWI8eyX6bH",
-            linkText: "https://zealy.io/cw/rainmakr/invite/",
-          },
-          {
-            type: "text",
-            text: "Complete all socials tasks",
-          },
-          {
-            type: "text",
-            text: "Claim your roles",
-          },
-        ],
-      },
-      {
-        type: "🤑",
-        text: "Have a minimum of 2ETH of volume",
-        subItems: [
-          {
-            type: "link",
-            text: "Get some faucet on MegaEth:",
-            link: "testnet.megaeth.com/#4",
-            linkText: "testnet.megaeth.com",
-          },
-          {
-            type: "link",
-            text: "Visit RainAI:",
-            link: "https://rainmakr.xyz/en/rainai",
-            linkText: "https://rainmakr.xyz/en/rainai",
-          },
-          {
-            type: "link",
-            text: "or RainPump:",
-            link: "https://rainmakr.xyz/en/rainpump",
-            linkText: "https://rainmakr.xyz/en/rainpump",
-          },
-          {
-            type: "text",
-            text: "Buy & Sell tokens to get a total volume of 2ETH on your account",
-          },
-          {
-            type: "text",
-            text: "Claim your rewards",
-          },
-        ],
-      },
-    ],
-    backers: ["Robot Ventures", "1k(x)", "GSR", "Maven 11"],
-    platformPreview: true,
-  },
-  nodepay: {
-    name: "NodePay",
-    x: "https://x.com/NodePay",
-    badge: "Season 4",
-    badgeColor: "blue",
-    raised: "$11M raised",
-    title: "Decentralized trading platform",
-    estimatedTime: "15 min",
-    image:
-      "https://play-lh.googleusercontent.com/x7F1sCseMpHlWuBYYh3vUaXvEASveBMCO6bejozZ7_FGQODAEKOYlcnNB-91xLXGrg=w240-h480-rw",
-    content: [
-      {
-        type: "text",
-        text: "Raised $11M from GSR, Robot Ventures, Maven 11, etc.",
-      },
-      {
-        type: "text",
-        text: "Activity:",
-        subItems: [
-          {
-            type: "link",
-            text: "Create a token and perform swaps:",
-            link: "https://testnet.gte.xyz/dash",
-            linkText: "testnet.gte.xyz/dash",
-          },
-        ],
-      },
-    ],
-    backers: ["Robot Ventures", "1k(x)", "GSR", "Maven 11"],
-    platformPreview: true,
-  },
   Kaisar: {
     name: "@KaisarNetwork",
     x: "https://x.com/KaisarNetwork",
     image: "https://pbs.twimg.com/profile_images/1776202066282926080/5ppDFq9k_400x400.jpg",
     badge: "Gros Potentiel",
     badgeColor: "blue",
-    raised: "$54M raised",
-    title: "🚀 Guide rapide",
+    raised: "$54M (VCs)",
+    title: "Guide rapide",
+    cost: "<1$",
+    estimatedReward: "+1000$",
     estimatedTime: "10 minutes",
     content: [
       {
+        step: 1,
         type: "",
-        text: "🔹 Étape 1 – CRÉATION DE COMPTE",
+        text: "CRÉATION DE COMPTE",
         subItems: [
           {
             type: "text",
@@ -126,54 +32,62 @@ const tutorialsData = {
           },
           {
             type: "image",
-            link: "https://lh3.googleusercontent.com/nIKVFi79FAnod_6crvWI4Iu3-8dvm75wXy1iZr9slp2kC_FbgzY3UXz-6a_GNR2WbJW6w9xOdz0cSXyge7PLBLSNRQ=s1280-w1280-h800",
+            link: {
+              url: "https://lh3.googleusercontent.com/nIKVFi79FAnod_6crvWI4Iu3-8dvm75wXy1iZr9slp2kC_FbgzY3UXz-6a_GNR2WbJW6w9xOdz0cSXyge7PLBLSNRQ=s1280-w1280-h800",
+              text: "Kaisar Dashboard",
+            },
           },
         ],
       },
       {
+        step: 2,
         type: "",
-        text: "🔹 Étape 2 – INSTALLATION DE L'APP",
+        text: "INSTALLATION DE L'APP",
         subItems: [
           {
-            type: "text",
-            text: "Télécharge et installe l'extension nécessaire au fonctionnement du programme.",
-          },
-          {
             type: "link",
-            text: "Lien :",
-            link: "https://chromeextensions.com/KaisarNetwork",
-            linkText: "chrome-extensions.com/Kaisar",
+            text: "Télécharge et installe l'extension nécessaire au fonctionnement du programme.",
+            link: {
+              url: "chrome://extensions/KaisarNetwork",
+              text: "Télécharger",
+            },
           },
           {
             type: "image",
-            link: "https://upload.wikimedia.org/wikipedia/fr/thumb/7/7d/FC_Kaisar_logo.svg/278px-FC_Kaisar_logo.svg.png",
-            linkText: "chrome-extensions.com/Kaisar",
+            link: {
+              url: "https://upload.wikimedia.org/wikipedia/fr/thumb/7/7d/FC_Kaisar_logo.svg/278px-FC_Kaisar_logo.svg.png",
+              text: "Logojsp",
+            },
           },
         ],
       },
       {
+        step: 3,
         type: "",
-        text: "🔹 Étape 3 – CONNECTE TON WALLET",
+        text: "CONNECTE TON WALLET",
         subItems: [
           {
             type: "text",
-            text: "Connecte ton portefeuille crypto (MetaMask, etc.) à l'extension.",
-          },
-          {
-            type: "text",
-            text: "✅ Effectue la vérification (souvent sur le réseau Peaq) pour être pleinement éligible.",
+            text: "🦊 Connecte ton portefeuille crypto (MetaMask, etc.) à l'extension.",
+            link: {
+              url: "",
+              label: "",
+            }
           },
           {
             type: "link",
-            text: "Lien :",
-            link: "https://chromeextensions.com/KaisarNetwork",
-            linkText: "chrome-extensions.com/Kaisar",
+            text: "✅ Effectue la vérification (souvent sur le réseau Peaq) pour être pleinement éligible.",
+            link: {
+              url: "https://peaq.network/verify",
+              label: "Me vérifier",
+            }
           },
         ],
       },
       {
+        step: 4,
         type: "",
-        text: "🔹 Étape 4 – CLAIM LES POINTS",
+        text: "CLAIM LES POINTS",
         subItems: [
           {
             type: "text",
@@ -186,8 +100,9 @@ const tutorialsData = {
         ],
       },
       {
+        step: 5,
         type: "",
-        text: "🔹 Étape 5 – SOIS ACTIF",
+        text: "SOIS ACTIF",
         subItems: [
           {
             type: "text",
@@ -208,6 +123,7 @@ const tutorialsData = {
         ],
       },
       {
+        step: 0,
         type: "",
         text: "✅ Astuce de pro ",
         subItems: [
@@ -289,12 +205,13 @@ export default function TutorialPage({ params }: PageProps) {
               </h1>
               <p className="text-sm text-gray-400">Airdrop Tutorial Platform</p>
             </div>
+            <Link href="/" className="ml-100 text-blue-400 hover:underline flex items-center gap-2 mb-6">
+              <ChevronLeft className="h-4 w-4" />
+              Back to tutorials
+            </Link>
           </div>
-          <Link href="/" className="text-blue-400 hover:underline flex items-center gap-2 mb-6">
-            <ChevronLeft className="h-4 w-4" />
-            Back to tutorials
-          </Link>
-          <div className="flex items-center justify-between mb-2">
+
+          <div className="flex items-center justify-between mb-2 mt-8">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <img className="h-10 w-10 rounded-full" src={tutorial.image || "/placeholder.svg"} />
               <a href={tutorial.x}>{tutorial.name}</a>
@@ -302,92 +219,143 @@ export default function TutorialPage({ params }: PageProps) {
                 {tutorial.badge}
               </span>
             </h2>
-            <span className="text-sm text-green-400">{tutorial.raised}</span>
+            <div className="flex gap-2">
+              <Button size="sm" className="bg-yellow-500 hover:bg-yellow-600 text-black">
+                <Star className="w-4 h-4 mr-1" />
+                Favorited
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                className="border-slate-700 text-slate-300 hover:bg-slate-800 bg-transparent"
+              >
+                <Share2 className="w-4 h-4 mr-1" />
+                Share
+              </Button>
+            </div>
           </div>
           <div className="flex items-center justify-between mb-2.5">
-            <h3 className="text-2xl font-medium text-pink-400">{tutorial.title}</h3>
-            <div className="flex items-center gap-3">
-              <button
-                className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
-                aria-label="Remove from favorites"
-              >
-                <Star className="h-4 w-4" fill="#FBBF24" color="#FBBF24" />
-                <span className="text-sm">Favorited</span>
-              </button>
-              <div className="p-0">
-                <div className="relative inline-block">
-                  <button
-                    className="flex items-center gap-1 px-3 py-1.5 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
-                    aria-label="Share tutorial"
-                  >
-                    <Share2 className="h-4 w-4" />
-                    <span className="text-sm">Share</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+
           </div>
           <a className="text-gray-300">
             KaiSar @KaisarNetwork is a decentralized AI infrastructure where your compute is your currency.
           </a>
-          <strong className="text-300">
-            <h3>💰 Coût : &lt;1$ </h3>
-            <h3>💸 Airdrop Potentiel : 1000$+</h3>
-            <h3>⏳ Temps par jour : {tutorial.estimatedTime}</h3>
-          </strong>
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
-              <Clock className="h-4 w-4" />
-              <span>Estimated time: {tutorial.estimatedTime}</span>
+
+          {/* Quick Guide */}
+          <Card className="mt-6 mb-6 bg-slate-900 border-slate-800">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center gap-2">
+                <Rocket className="w-5 h-5 text-emerald-400" />
+                {tutorial.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <DollarSign className="w-4 h-4 text-yellow-400" />
+                    <span className="text-slate-300 text-sm">Coût</span>
+                  </div>
+                  <span className="text-white-500">{tutorial.cost}</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Target className="w-4 h-4 text-emerald-400" />
+                    <span className="text-slate-300 text-sm">Airdrop Potentiel</span>
+                  </div>
+                  <span className="text-white-400">{tutorial.estimatedReward}</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-blue-400" />
+                    <span className="text-slate-300 text-sm">Temps estimé</span>
+                  </div>
+                  <span className="text-white">{tutorial.estimatedTime}</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-purple-400" />
+                    <span className="text-slate-300 text-sm">Fonds levés</span>
+                  </div>
+                  <span className="text-white">{tutorial.raised}</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          {/*Progress Bar
+           <Card className="mt-6 mb-6 bg-slate-900 border-slate-800">
+            <ProgressBar progress={32} />
+            <div className="flex items-center justify-between mb-2.5">
+              <span className="text-sm font-medium ml-1">32% complete</span>
             </div>
-            <span className="text-sm font-medium">32% complete</span>
-          </div>
-          <ProgressBar progress={32} />
+          </Card> 
+          */}
         </header>
-        <main className="space-y-3 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6">
+        <main className="">
           <div className="space-y-4">
             {tutorial.content.map((item, index) => (
               <div key={index} className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <div className="min-w-5 pt-1">
-                    <span className="text-red-500">{item.type}</span>
-                  </div>
-                  <div>
-                    <h1 className="font-medium">
-                      <strong>{item.text}</strong>
-                    </h1>
-                  </div>
-                </div>
-                {item.subItems && (
-                  <div className="ml-7 space-y-2 text-gray-300">
-                    {item.subItems.map((subItem, subIndex) => (
-                      <div key={subIndex} className="flex items-start gap-2">
-                        <div className="min-w-5">-</div>
-                        <div className="flex items-center gap-2">
-                          <span>{subItem.text}</span>
-                          {subItem.type === "link" && (
-                            <a
-                              href={subItem.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-400 hover:underline flex items-center gap-1"
-                            >
-                              {subItem.link}
-                              <ExternalLink className="h-3 w-3" />
-                            </a>
-                          )}
-                          {subItem.type === "image" && (
-                            <img
-                              src={subItem.link}
-                              className="text-blue-400 hover:underline flex items-center gap-1"
-                            /> 
-                          )}
-                        </div>
+
+                <Card className="mt-6 mb-6 bg-slate-900 border-slate-800">
+                  <div className="flex items-start gap-2">
+                    <div className="min-w-5 pt-1">
+                      <span className="text-red-500">{item.type}</span>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        {item.step != 0 && (
+                          <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
+                            <span className="text-white font-bold">{item.step}</span>
+                          </div>
+                        )}
+                        <h1 className="font-medium">
+                          <strong>{item.text}</strong>
+                        </h1>
                       </div>
-                    ))}
-                    <br></br>
+                    </div>
                   </div>
-                )}
+
+                  {item.subItems && (
+                    <div className="ml-7 space-y-2 text-gray-300">
+                      {item.subItems.map((subItem, subIndex) => (
+
+                        <div key={subIndex} className="flex items-start gap-2">
+                          <div className="flex items-center gap-2">
+
+                            <div className="mb-2 bg-slate-800 rounded-lg p-4 border-l-4 border-purple-500">
+                              <a className="text-slate-200 leading-relaxed ">
+                                <span>{subItem.text}</span> <br />
+                                {subItem.type === "link" && (
+
+                                  <p className="flex justify-start mt-2" href={subItem.link.url} target="_blank">
+                                    <Button size="sm" className="bg-blue-500 hover:bg-blue-600 text-white">
+                                      {subItem.link.label || "Visit"}
+                                    </Button>
+                                  </p>
+                                )}
+                              </a>
+                              {subItem.type === "image" && (
+                                <img
+                                  src={subItem.link.url}
+                                  className="text-blue-400 hover:underline flex items-center gap-1"
+                                />
+                              )}
+                            </div>
+
+                          </div>
+                        </div>
+                      ))}
+                      <div className="flex justify-end">
+                        <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition-colors duration-300 ease-in-out cursor-pointer mr-10">
+                          Marquer comme terminé
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </Card>
               </div>
             ))}
           </div>
@@ -412,6 +380,7 @@ export default function TutorialPage({ params }: PageProps) {
               allowFullScreen
             ></iframe>
           </div>
+
           {tutorial.platformPreview && (
             <div className="mt-4 bg-gray-800/50 p-3 rounded-lg border border-gray-700">
               <div className="text-sm font-medium mb-2">Platform Preview</div>

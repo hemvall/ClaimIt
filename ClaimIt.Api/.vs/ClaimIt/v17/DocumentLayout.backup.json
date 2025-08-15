@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\repos\\ClaimIt\\ClaimIt.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|d:\\repos\\claimit\\claimit.api\\claimit\\models\\wallets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\models\\wallets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|d:\\repos\\claimit\\claimit.api\\claimit\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3A6E3C2D-9139-47CB-9629-7EF9CA0FD4E6}|ClaimIt\\ClaimIt.csproj|solutionrelative:claimit\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,19 +43,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Wallets.cs",
+              "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Wallets.cs",
+              "RelativeDocumentMoniker": "ClaimIt\\Models\\Wallets.cs",
+              "ToolTip": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Wallets.cs",
+              "RelativeToolTip": "ClaimIt\\Models\\Wallets.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T15:23:32.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "TasksController.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\TasksController.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Controllers\\TasksController.cs",
               "ToolTip": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\TasksController.cs",
               "RelativeToolTip": "ClaimIt\\Controllers\\TasksController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-26T07:25:07.881Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Airdrops.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Airdrops.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\Airdrops.cs",
@@ -63,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Tasks.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\Tasks.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\Tasks.cs",
@@ -75,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UserAirdrop.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Models\\UserAirdrop.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Models\\UserAirdrop.cs",
@@ -87,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UsersAirdropController.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\UsersAirdropController.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Controllers\\UsersAirdropController.cs",
@@ -99,7 +116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "AirdropsController.cs",
               "DocumentMoniker": "D:\\repos\\ClaimIt\\ClaimIt.Api\\ClaimIt\\Controllers\\AirdropsController.cs",
               "RelativeDocumentMoniker": "ClaimIt\\Controllers\\AirdropsController.cs",

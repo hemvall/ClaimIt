@@ -11,6 +11,7 @@ namespace ClaimIt.Models
         public string? Label { get; set; }
         public string? Address { get; set; }
         public string? Platform { get; set; }
+        public int? EstimatedValue { get; set; }
         public DateTime? CreatedAt { get; set; }
     }
 }
