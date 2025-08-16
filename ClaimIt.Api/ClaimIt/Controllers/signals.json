@@ -1,0 +1,28 @@
+
+  "signals": [
+    {
+      "source_type": "twitter",
+      "project": "Fluent",
+      "author": "@asedd72",
+      "author_pfp": "https://pbs.twimg.com/profile_images/1639357795576209428/1KIp2nm1_400x400.jpg",
+      "content": "Fluent — Mint NFT \uD83E\uDE82\n\n@fluentxyz\n raised $10M, mint NFT to print interaction on the testnet\n\n     ➖faucet:  http://testnet.gblend.xyz\n     ➖go to: https://omnihub.xyz/collection/fluent-testnet/0xF4BB891765361cB0FeC50Cf0a8aB0412d36A8aBD?ref=0x983409AC03B6B5DFD45f895579251aae370ba1D3\n     ➖complete tasks\n     ➖mint NFT ✅\n\nYou can also start farming the testnet here: http://testnet.fluent.xyz",
+      "url": "https://x.com/asedd72/status/1956644535892660521",
+      "image": "https://pbs.twimg.com/media/GyaM7N0W4AABNfN?format=jpg&name=large",
+      "type": "NFT Mint",
+      "score": 7.2,
+      "timestamp": "2025-08-16T18:45:00Z"
+    },
+    {
+      "source_type": "twitter",
+      "project": "Somnia",
+      "author": "@asedd72",
+      "author_pfp": "https://pbs.twimg.com/profile_images/1639357795576209428/1KIp2nm1_400x400.jpg",
+      "content": "Somnia — Checker is live! \uD83E\uDE82\n\nYou can now check if you’re eligible for Somnia airdrop \n\n     ➖ https://register.somnia.network\n\nConnect your wallet and socials and check",
+      "url": "https://x.com/asedd72/status/1956406042016858253",
+      "image": "https://pbs.twimg.com/media/GyaM7N0W4AABNfN?format=jpg&name=large",
+      "type": "Airdrop Registration",
+      "score": 9.1,
+      "timestamp": "2025-08-15T17:22:00Z"
+    }
+  ]
+}
